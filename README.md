@@ -1,20 +1,25 @@
-```markdown
-# jurDroids -
-*machine learned empathizer pre-prometed to reflex on different personalities while applying game theory for its judgment call.*
+# jurDroids a Kleros Juror Profile Generator - Development & Testing Runbook
 
-alpha draft //work in progress
+**An LLM-based tool for generating diverse, simulated juror profiles for testing and analysis within the Kleros decentralized justice ecosystem. This repository provides the runbook for its development, customization, and test execution.**
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
 
 ## Overview
 
-This repository hosts a detailed runbook designed to guide users through the process of:
+This repository contains the code and documentation for an AI tool that leverages Large Language Models (LLMs) to create varied and nuanced juror profiles. These generated profiles are intended **strictly for simulation, testing, and research purposes** related to the Kleros protocol.
 
-1.  **Setting up a development environment** 
-2.  **Customizing** the agency's features, logic, or appearance according to specific needs.
-3.  **Deploying** a functional **test version** of the customized agency to a designated environment.
+Conceptually, this tool functions as an **agentic AI system**. It takes high-level instructions and uses LLM capabilities (potentially including planning, reasoning, and using specific knowledge sources) to generate complex, structured outputs in the form of juror profiles. For a deeper dive into Agentic AI concepts, see the video linked in the [Further Reading](#further-reading--conceptual-background) section.
 
-**(Explain what the "agency" is in a bit more detail here. What does it do? What technology stack is it based on?)**
+The primary goals of this project and runbook are to:
+
+1.  Provide a framework for **generating synthetic juror data** reflecting potential real-world diversity (or specific simulated characteristics).
+2.  Offer clear instructions for **setting up a development environment** to work on the generation logic.
+3.  Guide users on **customizing the generation process** (e.g., modifying prompts, parameters, juror archetypes).
+4.  Detail how to **run the tool to generate test batches** of juror profiles.
+
+
+**Ethical Considerations & Disclaimer:**
+*This tool generates synthetic data for **testing and simulation only**. The generated profiles may inadvertently reflect biases present in the underlying LLM training data. They should **never** be used to make assumptions about real individuals or influence real dispute resolutions. Use responsibly and be aware of the limitations and potential ethical implications.*
 
 ## Table of Contents
 
@@ -22,135 +27,258 @@ This repository hosts a detailed runbook designed to guide users through the pro
 * [Prerequisites](#prerequisites)
 * [Getting Started](#getting-started)
     * [Cloning the Repository](#cloning-the-repository)
-    * [Initial Setup](#initial-setup)
+    * [Installation & Setup](#installation--setup)
+    * [Backend Configuration (LLM Access)](#backend-configuration-llm-access)
 * [Runbook Sections](#runbook-sections)
-    * [1. Development Environment Setup](./docs/development-setup.md) * [2. Customizing Your Agency](./docs/customization-guide.md) * [3. Deploying a Test Instance](./docs/test-deployment.md) * [Technology Stack](#technology-stack)
+    * [1. Development Environment](./docs/development.md)
+    * [2. Customizing Juror Generation](./docs/customization.md)
+    * [3. Generating Test Profiles (Running the Tool)](./docs/generating-profiles.md)
+* [Technology Stack](#technology-stack)
+* [Output Format & Traceability](#output-format--traceability)
+* [Further Reading / Conceptual Background](#further-reading--conceptual-background)
 * [Troubleshooting](#troubleshooting)
-* [Contributing](#contributing) (Optional)
+* [Contributing](#contributing)
 * [License](#license)
-* [Contact](#contact) (Optional)
+* [Contact](#contact)
 
 ## Who is this for?
 
-This runbook is intended for:
-
-* Anyone needing to understand the workflow for transparency, colaboration, customizing and testing.
-* Developers who need to build upon or modify the framework.
-* DevOps engineers or technical teams responsible for deploying and managing test instances.
-
-    *(Adjust this list as needed)*
+* **Kleros Researchers & Analysts:** Simulating court scenarios, testing mechanism designs, studying potential voting patterns.
+* **Developers:** Working on the juror generation tool itself or integrating simulated jurors into other Kleros-related testing tools.
+* **Protocol Developers:** Stress-testing Kleros contracts or UIs with diverse simulated juror data.
 
 ## Prerequisites
 
-Before you begin, ensure you have the following installed and configured:
+Before you begin, ensure you have:
 
 * **Git:** For cloning the repository and version control.
-* **[Programming Language & Version]:** e.g., Python 3.9+, Node.js 18+, Go 1.20+
-* **[Package Manager]:** e.g., pip, npm, yarn
-* **[Containerization Tool (if used)]:** e.g., Docker, Docker Compose
-* **[Cloud Provider CLI/Account (if applicable)]:** e.g., AWS CLI, Google Cloud SDK, Azure CLI (with necessary permissions for test deployment)
-* **[Specific Tools/Libraries]:** e.g., Terraform, Ansible, specific IDE extensions
-* **Basic understanding of:** [Key Concepts, e.g., REST APIs, containerization, the specific domain of your agency]
-
-*(Be specific about versions and necessary configurations)*
+* **Programming Language & Version:** e.g., Python 3.9+, Node.js 18+, Go 1.20+
+* **Package Manager:** e.g., pip, npm, yarn
+* **Cloud Provider CLI/Account (if applicable):** e.g., AWS CLI, Google Cloud SDK, Azure CLI (with necessary permissions for test deployment)
+* **LLM Access:** An API key for [Specify LLM Provider, e.g., OpenAI, Anthropic, Cohere] or access to a local LLM setup (if applicable).
+* **Specific Tools/Libraries:** e.g., Terraform, Ansible, specific IDE extensions
+* **Basic understanding of:** LLMs, prompt engineering, Python development, and the Kleros protocol.
 
 ## Getting Started
 
 ### Cloning the Repository
 
 ```bash
-git clone [https://github.com/](https://github.com/)[MAMware]/[court-jurdroids].git
+git clone [https://github.com/MAMware/court-jurdroids.git]
 cd [court-jurdroids]
 ```
 
-### Initial Setup
+### Installation & Setup
 
-1.  **(Install Dependencies):**
+//Work in progress
+<!-- 1.  **(Set up a Virtual Environment - Recommended):**
     ```bash
-    # Example for Python
-    pip install -r requirements.txt
-
-    # Example for Node.js
-    npm install
+    python -m venv venv
+    source venv/bin/activate # On Windows use `venv\Scripts\activate`
     ```
-2.  **(Configuration):**
-    * Copy the example configuration file: `cp config.example.yaml config.yaml`
-    * Update `config.yaml` with your specific settings (API keys, database credentials, environment details). **Note:** Do not commit sensitive information directly. Consider using environment variables or a secrets management system. See `docs/configuration.md` for details.
-3.  **(Environment Variables):**
-    * Set up any required environment variables. You might provide an `.env.example` file.
+2.  **(Install Dependencies):**
+    ```bash
+    pip install -r requirements.txt
+    ```
+3.  **(Download necessary models/data - if applicable):**
+    * *(Add instructions if users need to download specific model files, embeddings, etc.)* -->
+
+
+### Backend Configuration (LLM Access)
+
+This tool is designed to be potentially adaptable to various LLM backends. The core configuration happens via environment variables and potentially configuration files (`config.yaml`).
+
+### API Key Configuration
+
+The tool requires access to an LLM API. Configure your API key securely: **Environment Variables (`.env`):** Primarily used for API keys and secrets.
+
+1.  Copy the example environment file:
     ```bash
     cp .env.example .env
-    # Edit .env with your values
+    # Edit .env with your specific keys and endpoints
     ```
-4.  **(Docker Setup - if applicable):**
-    ```bash
-    docker-compose build
-    docker-compose up -d # To start services in the background
+    * **Example Variables:**
+        ```dotenv
+        # For OpenAI
+        OPENAI_API_KEY="sk-..."
+        # OPENAI_MODEL_NAME="gpt-4-turbo-preview"
+
+        # For Azure OpenAI
+        # AZURE_OPENAI_ENDPOINT="[https://your-instance.openai.azure.com/](https://www.google.com/search?q=https://your-instance.openai.azure.com/)"
+        # AZURE_OPENAI_API_KEY="your-azure-key"
+        # AZURE_DEPLOYMENT_NAME="your-deployment-id" # Model deployment name
+
+        # For Google Cloud Vertex AI
+        # GOOGLE_APPLICATION_CREDENTIALS="/path/to/your/keyfile.json"
+        # GCP_PROJECT_ID="your-gcp-project-id"
+        # GCP_LOCATION="us-central1"
+        # VERTEX_MODEL_NAME="gemini-1.0-pro" # Or other model ID
+
+        # For Hugging Face (Inference Endpoints or local)
+        # HF_API_TOKEN="hf_..." # For gated models or Inference API
+        # HF_MODEL_NAME="mistralai/Mistral-7B-Instruct-v0.1" # Example
+
+        # For Local/Open Source (if using something like Ollama or LM Studio)
+        # LOCAL_LLM_API_BASE="http://localhost:11434/v1" # Example for Ollama-compatible API
+        # LOCAL_LLM_MODEL_NAME="llama3"
+        # LOCAL_LLM_API_KEY="ollama" # Or often not needed
+        ```
+    * **Important:** Ensure `.env` is in `.gitignore`.
+
+2.  **Configuration File (`config.yaml` - Optional):** For non-sensitive settings like default model parameters, prompt template paths, etc.
+    ```yaml
+    # Example config.yaml structure
+    # llm_defaults:
+    #   temperature: 0.7
+    #   max_tokens: 500
+    # prompt_paths:
+    #   juror_base_prompt: "./prompts/juror_base_v1.txt"
+    # backend_settings:
+    #   # Platform-specific overrides if not using env vars alone
+    #   # e.g., azure_api_version: "2023-07-01-preview"
     ```
 
-*(Adjust these steps based on your actual setup process)*
+**(The actual code needs logic to read these variables/configs and instantiate the correct LLM client.)**
 
 ## Runbook Sections
 
 This repository is structured around the core tasks. Follow the guides linked below for detailed instructions:
 
-1.  **[Development Environment Setup](./docs/development-setup.md):** Instructions for setting up your local machine for coding, running, and debugging the agency. Includes details on linters, formatters, and running unit tests.
-2.  **[Customizing Your Agency](./docs/customization-guide.md):** Guidance on how to modify the agency. Covers topics like changing configuration, adding new modules/features, modifying workflows, or branding.
-3.  **[Deploying a Test Instance](./docs/test-deployment.md):** Step-by-step procedures for deploying the agency to a **non-production/test environment**. Includes scripts, target platform details (e.g., local Docker, a specific cloud sandbox), and verification steps. **This guide is NOT intended for production deployments.**
+1.  **[Development Environment](./docs/development.md):** Setting up for coding, debugging, testing.
+2.  **[Customizing Juror Generation](./docs/customization.md):** Modifying the logic. Key areas include:
+    * **Prompt Engineering:** Adjusting the text prompts sent to the LLM (often the biggest impact). Files might be in a `/prompts` directory.
+    * **Generation Parameters:** Tweaking settings like `temperature`, `top_p`, `max_tokens` (often configurable via `config.yaml` or command-line args).
+    * **Backend Logic:** Modifying the Python code (`generate_jurors.py` or similar) to handle different LLM clients (OpenAI, Anthropic, VertexAI, Hugging Face Transformers, local models via libraries like `litellm` or custom wrappers), potentially using different parameters or prompt formats suited to each.
+    * **Archetype Definition:** Changing how different types of jurors are defined or requested.
+3.  **[Generating Test Profiles (Running the Tool)](./docs/generating-profiles.md):** Step-by-step instructions on how to execute the main script(s) to produce a batch of juror profiles. Includes command-line arguments, configuration options, and expected output.
+4.  **[Further Reading](#further-reading--conceptual-background):** Advanced prompting techniques and agentic design patterns Topics include:
+    * Editing LLM prompts.
+    * Adjusting generation parameters (temperature, max tokens).
+    * Defining new juror archetypes or attributes.
+    * Fine-tuning a model (if applicable and documented).
 
-*(Consider putting the actual runbook content in separate Markdown files within a `/docs` directory for better organization, as linked above)*
 
 ## Technology Stack
 
-* **Backend:** [e.g., Python (Flask/Django), Node.js (Express), Go]
-* **Frontend:** [e.g., React, Vue, Angular, None]
-* **Database:** [e.g., PostgreSQL, MongoDB, Redis]
-* **Containerization:** [e.g., Docker, Kubernetes (for test env?)]
-* **Deployment:** [e.g., Docker Compose, Serverless Framework, Helm, Manual Scripts]
-* **CI/CD:** [e.g., GitHub Actions, Jenkins, GitLab CI] (Even if just for linting/testing in this repo)
+* **Core Language:** Python [Version]
+* **LLM Interaction:** [e.g., OpenAI Lib, Langchain, Hugging Face Transformers, Google Vertex AI SDK, LiteLLM (for multi-backend support)]
+* **Supported Backends (Potentially):** OpenAI API, Azure OpenAI, Google Vertex AI, Anthropic API, Hugging Face (Inference API/Transformers), Local models (via Ollama, LM Studio compatible APIs). *(Adjust based on actual implementation)*
+* **Environment Management:** python-dotenv, potentially YAML reader (PyYAML).
+* **Agent Concepts/Patterns:** May employ techniques discussed in Agentic AI research, such as advanced prompting, planning, reflection, or Retrieval-Augmented Generation (RAG) to enhance profile quality and consistency. (See [Further Reading](#further-reading--conceptual-background)).
+* **Data Handling:** [e.g., Pandas, JSON, YAML]
+* **[Other Libraries]:** [e.g., Scikit-learn for bias analysis]
+
+## Output Format & Traceability
+
+The tool outputs profiles (e.g., as JSON Lines - one JSON object per line in a file). A key goal is **traceability** for reproducibility and analysis. Each generated profile should include metadata such as:
+
+```json
+// Example JSON structure
+{
+  "jurorId": "sim-juror-abc123",
+  "profile": {
+    // --- Core generated profile attributes ---
+    "background": "Data scientist with a background in behavioral economics.",
+    "expertiseAreas": ["statistics", "machine learning", "market analysis"],
+    "cognitiveProfile": "Prone to analytical thinking, slightly risk-averse, values empirical evidence.",
+    "platformActivity": "Simulated: 25 cases judged, 92% coherence."
+    // ... other relevant generated fields
+  },
+  "generationMetadata": {
+    // --- Fields for tracing randomness and context ---
+    "generationTimestamp": "2025-04-01T09:30:00Z",
+    "llmBackendUsed": "Azure OpenAI", // e.g., "OpenAI", "VertexAI", "HuggingFace", "Local/Ollama"
+    "llmModelName": "gpt-4-deployment-xyz", // Specific model or deployment ID used
+    "promptTemplateId": "juror_base_v1.2", // Identifier for the prompt structure used
+    "generationParameters": { // Key parameters influencing randomness
+      "temperature": 0.75,
+      "top_p": 1.0,
+      "max_tokens": 500
+      // "seed": 42 // If the backend/model supports deterministic seeding
+    },
+    "requestInput": { // Optional: Key inputs used for this specific generation
+      "archetypeRequested": "analytical_expert",
+      "caseContextSnippet": "Dispute involving smart contract failure..." // If applicable
+    }
+    // Potentially add version of the generation script itself
+    // "scriptVersion": "v0.2.1"
+  }
+}
+```
+
+```json
+// Example JSON structure
+{
+  "jurorId": "sim-juror-xyz789",
+  "profile": {
+    "background": "Retired software engineer with interest in economics.",
+    "expertiseAreas": ["software development", "basic contract law"],
+    "cognitiveProfile": "Analytical, detail-oriented, slight skepticism towards complex financial instruments.",
+    "platformActivity": "Simulated history of 15 cases judged, 85% coherence.",
+    // Add other relevant generated fields
+  },
+  "generationMetadata": {
+    "modelUsed": "gpt-4-turbo-preview",
+    "promptTemplateVersion": "v1.2",
+    "generationTimestamp": "2025-04-01T08:00:00Z"
+  }
+}
+```
+*(Adjust the example to match your actual output)*
+
+* See `docs/output-schema.md`for details.
+
+## Further Reading / Conceptual Background
+
+**Understanding Agentic AI:** For a good overview of the concepts behind agentic systems, language models, prompting strategies, and design patterns that might be relevant to this tool, watch this video:
+ *Stanford Webinar - Agentic AI: A Progression of Language Model Usage* [Agentic AI Overview & Concepts](youtube.com/watch?v=kJLiOGle3Lw):   In this webinar, you will gain an introduction to the concept of agentic language models (LMs) and their usage. You will learn about common limitations of LMs and agentic LM usage patterns, such as reflection, planning, tool usage, and iterative LM usage. 
+
 
 ## Troubleshooting
 
-* **Issue:** Common problem 1 (e.g., Dependency conflicts).
-    * **Solution:** Steps to resolve it.
-* **Issue:** Docker container fails to start.
-    * **Solution:** Check logs (`docker-compose logs [service-name]`), ensure ports aren't blocked, verify `.env` file.
-* **(Link to a dedicated troubleshooting guide if needed: [`./docs/troubleshooting.md`](./docs/troubleshooting.md))**
-* If you encounter issues not listed here, please [check the GitHub Issues](https://github.com/[your-username]/[your-repo-name]/issues) or [open a new one](#contact).
+* **Issue:** `AuthenticationError` or `401 Unauthorized` when calling LLM API.
+    * **Solution:** Verify your API key in the `.env` file is correct and has not expired. Ensure the `.env` file is being loaded correctly by the application. Check your account status with the LLM provider.
+* **Issue:** Generated profiles seem repetitive or lack diversity.
+    * **Solution:** Adjust LLM parameters (e.g., increase `temperature`). Refine prompts to encourage more varied outputs. Check customization guide (`docs/customization.md`).
+* **Issue:** Script runs out of memory.
+    * **Solution:** Reduce batch size for generation. If using local models, ensure sufficient RAM/VRAM.
+* **(Link to more troubleshooting tips or GitHub Issues)**
 
 ## Contributing (Optional)
 
-We welcome contributions! If you'd like to improve the runbook or the underlying scripts/code, please follow these steps:
+Contributions are welcome! If you want to improve the generation logic, add features, or enhance the documentation:
 
 1.  Fork the repository.
 2.  Create a new branch (`git checkout -b feature/your-improvement`).
 3.  Make your changes.
-4.  Ensure your changes are well-documented and tested (if applicable).
+4.  Ensure your changes are well-documented, tested adherence to ethical guidelines. (if applicable).
 5.  Commit your changes (`git commit -m 'Add feature: your improvement'`).
 6.  Push to the branch (`git push origin feature/your-improvement`).
 7.  Open a Pull Request.
 
-Please read `CONTRIBUTING.md` for more detailed guidelines (if you create one).
+
 
 ## License
 
 This project is licensed under the [Your Chosen License, e.g., MIT License] - see the [LICENSE](LICENSE) file for details.
 
-## Contact (Optional)
+## Contact
 
 * For questions or support, please open an issue on GitHub.
-* Project Maintainer: [Your Name/Team Name] - [your-email@example.com] (Optional)
+* Project Maintainer: [MAMware] - [marcosmeneses@mamware.net]
 
-```
+<!-- ----------------------------------------------------------------- -->
 
----
+TO DO
+alpha progress: keep it lean
 
-alpha progress:
-1.  **Be Clear About:** //polish
-2.  **Specify the "Test" Scope:** Clearly state that the deployment section is *only* for test environments and perhaps why (e.g., lacks security hardening, uses test credentials, not scalable).
-3.  **Link Internally:** If your runbook is split into multiple files (recommended for longer guides), use relative links (`./docs/file.md`) effectively.
-4.  **Use Code Blocks:** Format all commands, code snippets, and configuration examples using backticks (`) or triple backticks (```). Specify the language for syntax highlighting (e.g., ```bash, ```python, ```yaml).
-5.  **Keep it Updated:** As the development or deployment process changes, remember to update the README and the runbook documents.
-6.  **Add Visuals (Optional):** Screenshots or simple diagrams (using tools like MermaidJS supported by GitHub Markdown) can significantly improve understanding.
+**Generate files** 
 
-Good luck with your project and writing the README! Let me know if you have more specific sections you'd like help with.
+1.  **[Development Environment]** ./docs/development.md:* Setting up your local machine for coding, debugging the generation scripts, and running any associated tests (linters, formatters).
+2.  **[Customizing Juror Generation]** ./docs/customization.md:* Modifying the core logic. This might include: Editing LLM prompts, Adjusting generation parameters (temperature, max tokens), Defining new juror archetypes or attributes, Fine-tuning a model (if applicable and documented).
+3.  **[Schema detail]** .docs/output-schema.md:* for a detailed schema description.
+4.  **[Test Profiles (Running the Tool)]** ./docs/generating-profiles.md:** Step-by-step instructions on how to execute the main script(s) to produce a batch of juror profiles. Includes command-line arguments, configuration options, and expected output.
+
+5.  **Keep it Updated:** As the development or deployment process changes, remember to update the README and the runbook documents. v0.0.2
+6.  **Add Visuals (Optional):** Screenshots or simple diagrams (using tools like MermaidJS supported by GitHub Markdown) can significantly improve understanding. //CONSIDER
+7.  **Add DIR:** `/prompts` (for prompt recomendations) //to continue line 147
