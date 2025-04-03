@@ -43,7 +43,7 @@ The primary goals of this project and runbook are to:
 
 ## Who is this for?
 
-* **Kleros Researchers & Analysts:** Simulating court scenarios, testing mechanism designs, studying potential voting patterns.
+* **Researchers & Analysts:** Simulating court scenarios, testing mechanism designs, studying potential voting patterns.
 * **Developers:** Working on the juror generation tool itself or integrating simulated jurors into other Kleros-related testing tools.
 * **Protocol Developers:** Stress-testing Kleros contracts or UIs with diverse simulated juror data.
 
@@ -244,7 +244,7 @@ The tool outputs profiles (e.g., as JSON Lines - one JSON object per line in a f
     * **Solution:** Reduce batch size for generation. If using local models, ensure sufficient RAM/VRAM.
 * **(Link to more troubleshooting tips or GitHub Issues)**
 
-## Contributing (Optional)
+## Contributing 
 
 Contributions are welcome! If you want to improve the generation logic, add features, or enhance the documentation:
 
@@ -270,7 +270,8 @@ This project is licensed under the [Your Chosen License, e.g., MIT License] - se
 <!-- ----------------------------------------------------------------- -->
 
 TO DO
-alpha progress: keep it lean
+
+alpha progress, keep it lean
 
 **Generate files** 
 
