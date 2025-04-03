@@ -1,6 +1,6 @@
-# jurDroids a virtual Juror Profile Generator - Development & Testing Runbook
+# jurDroids a virtual Juror profile generator
 
-**An LLM-based tool for generating diverse, simulated juror profiles for testing and analysis within the Kleros (not afiliated) decentralized justice ecosystem. This repository provides the runbook for its development, customization, and test execution.**
+**This tool integrates the costumization of LLMs to generate diverse, simulated juror profiles for testing and analysis within the Kleros (not afiliated) decentralized justice ecosystem. This repository provides the instructions for its development, customization, and test execution.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
 
