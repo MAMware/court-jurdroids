@@ -224,8 +224,7 @@ The tool outputs profiles (e.g., as JSON Lines - one JSON object per line in a f
 
 ## Further Reading / Conceptual Background
 
-**Understanding Agentic AI:** For a good overview of the concepts behind agentic systems, language models, prompting strategies, and design patterns that might be relevant to this tool, watch this video:
- *Stanford Webinar - Agentic AI: A Progression of Language Model Usage* [Agentic AI Overview & Concepts](youtube.com/watch?v=kJLiOGle3Lw):   In this webinar, you will gain an introduction to the concept of agentic language models (LMs) and their usage. You will learn about common limitations of LMs and agentic LM usage patterns, such as reflection, planning, tool usage, and iterative LM usage. 
+**Understanding Agentic AI:** For a good overview of the concepts behind agentic systems, language models, prompting strategies, and design patterns that might be relevant to this tool, its recommened to watch this video *Stanford Webinar - Agentic AI: A Progression of Language Model Usage* [Agentic AI Overview & Concepts](https://www.youtube.com/watch?v=kJLiOGle3Lw) there you will find an introduction to the concept of agentic language models (LMs) and their usage. Common limitations of LMs and agentic LM usage patterns, such as reflection, planning, tool usage, and iterative LM usage. 
 
 
 <!--## Troubleshooting
@@ -263,18 +262,16 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 <!-- ----------------------------------------------------------------- -->
 
-TO DO
+TO DO (keep it lean, alpha stage v0.0.5)
 
-alpha progress, keep it lean
+**Generate the contented for the files** 
 
-**Generate files** 
-
-1.  **[Development Environment]** ./docs/development.md:* Setting up your local machine for coding, debugging the generation scripts, and running any associated tests (linters, formatters).
+1.  **[Development Environment]** ./docs/development.md:* Setting up your local machine or cloud environment for coding, debugging the generation scripts, and running any associated tests (linters, formatters).
 2.  **[Customizing Juror Generation]** ./docs/customization.md:* Modifying the core logic. This might include: Editing LLM prompts, Adjusting generation parameters (temperature, max tokens), Defining new juror archetypes or attributes, Fine-tuning a model (if applicable and documented).
 3.  **[Schema detail]** .docs/output-schema.md:* for a detailed schema description.
 4.  **[Test Profiles (Running the Tool)]** ./docs/generating-profiles.md:** Step-by-step instructions on how to execute the main script(s) to produce a batch of juror profiles. Includes command-line arguments, configuration options, and expected output.
-5.  **Keep it Updated:** As the development or deployment process changes, remember to update the README and the runbook documents. v0.0.4
+5.  **Keep it Updated:** As the development or deployment process changes, remember to update the README and the runbook documents.
 
 TO CONSIDER  
-1. **Add Visuals:** Screenshots or simple diagrams (using tools like MermaidJS supported by GitHub Markdown) can significantly improve understanding. 
-7.  **Add dir:** `/prompts` (for prompt recomendations) //to continue line 147
+1. **Adding visuals:** Screenshots or simple diagrams (using tools like MermaidJS supported by GitHub Markdown) can significantly improve understanding. 
+7. **Add dir:** `/prompts` (for prompt recomendations) //revisit line 147
