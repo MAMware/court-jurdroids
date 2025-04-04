@@ -262,16 +262,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 <!-- ----------------------------------------------------------------- -->
 
-TO DO (keep it lean, current readme.md is at alpha stage v0.0.5)
+TO DO (keep it lean, current readme.md is at alpha stage v0.0.6
 
-**Generate the contented for the files** 
-
-1.  **[Development Environment]** ./docs/development.md:* Setting up your local machine or cloud environment for coding, debugging the generation scripts, and running any associated tests (linters, formatters).
-2.  **[Customizing Juror Generation]** ./docs/customization.md:* Modifying the core logic. This might include: Editing LLM prompts, Adjusting generation parameters (temperature, max tokens), Defining new juror archetypes or attributes, Fine-tuning a model (if applicable and documented).
-3.  **[Schema detail]** .docs/output-schema.md:* for a detailed schema description.
-4.  **[Test Profiles (Running the Tool)]** ./docs/generating-profiles.md:** Step-by-step instructions on how to execute the main script(s) to produce a batch of juror profiles. Includes command-line arguments, configuration options, and expected output.
-5.  **Keep it Updated:** As the development or deployment process changes, remember to update the README and the runbook documents.
+1.  **Keep it Updated:** As the development or deployment process changes, remember to update the README and the related documents.
 
 TO CONSIDER  
+
 1. **Adding visuals:** Screenshots or simple diagrams (using tools like MermaidJS supported by GitHub Markdown) can significantly improve understanding. 
 7. **Add dir:** `/prompts` (for prompt recomendations) 
