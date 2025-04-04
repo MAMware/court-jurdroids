@@ -1,21 +1,20 @@
 # jurDroids a virtual Juror profile generator
 
-**This tool integrates the costumization of LLMs to generate diverse, simulated juror profiles for testing and analysis within the Kleros (not afiliated) decentralized justice ecosystem. This repository provides the instructions for its development, customization, and test execution.**
+**This tool integrates the costumization of LLMs to generate diverse, simulated juror profiles for testing and analysis within decentralized justice systems like Kleros (not afiliated).** 
+**This repository provides the instructions for its development, customization, and test execution.**
 
-[![License: MIT](...)]()
-[![Python Version](...)]()
 
 ## Overview
 
-This repository contains the code and documentation for an AI tool that leverages Large Language Models (LLMs) to create varied and nuanced juror profiles. These generated profiles are intended **strictly for simulation, testing, and research purposes** related to the Kleros protocol.
+This repository containsthe documentation and code for an AI tool that uses Large Language Models (LLMs) to create varied and nuanced juror profiles. These generated profiles are intended **strictly for simulation, testing, and research purposes** related to decentralized justice systems.
 
 Conceptually, this tool functions as an **agentic AI system**. It takes high-level instructions and uses LLM capabilities (potentially including planning, reasoning, and using specific knowledge sources) to generate complex, structured outputs in the form of juror profiles. For a deeper dive into Agentic AI concepts, see the video linked in the [Further Reading](#further-reading--conceptual-background) section.
 
 The primary goals of this project and runbook are to:
 
-1. Provide a framework for **generating synthetic juror data** reflecting potential real-world diversity (or specific simulated characteristics).
+1. Provide a framework for **generating synthetic juror data** reflecting potential real-world diversity and specific simulated characteristics.
 2. Offer clear instructions for **setting up a development environment** to work on the generation logic.
-3. Guide users on **customizing the generation process** (e.g., modifying prompts, parameters, juror archetypes).
+3. Guide users on **customizing the generation process** for modifying prompts, parameters and juror archetypes.
 4. Detail how to **run the tool to generate test batches** of juror profiles.
 
 
@@ -44,9 +43,9 @@ The primary goals of this project and runbook are to:
 
 ## Who is this for?
 
-* **Researchers & Analysts:** Simulating court scenarios, testing mechanism designs, studying potential voting patterns.
+* **Researchers & Analysts:** Who are simulating court scenarios, testing mechanism designs, studying potential voting patterns.
 * **Developers:** Working on the juror generation tool itself or integrating simulated jurors into other Kleros-related testing tools.
-* **Protocol Developers:** Stress-testing Kleros contracts or UIs with diverse simulated juror data.
+* **Protocol Developers:** Stress-testing Kleros contracts with diverse simulated juror data.
 
 ## Prerequisites
 
@@ -55,8 +54,8 @@ Before you begin, ensure you have:
 * **Git:** For cloning the repository and version control.
 * **Programming Language & Version:** e.g., Python 3.9+, Node.js 18+, Go 1.20+
 * **Package Manager:** e.g., pip, npm, yarn
-* **Cloud Provider CLI/Account (if applicable):** e.g., AWS CLI, Google Cloud SDK, Azure CLI (with necessary permissions for test deployment)
-* **LLM Access:** An API key for [Specify LLM Provider, e.g., OpenAI, Anthropic, Cohere] or access to a local LLM setup (if applicable).
+* **Cloud Provider or local CLI Account:** e.g., AWS CLI, Google Cloud SDK, Azure CLI
+* **LLM Access:** An API key for [Specify LLM Provider, e.g., OpenAI, Anthropic, Cohere] or access to a local LLM setup.
 * **Specific Tools/Libraries:** e.g., Terraform, Ansible, specific IDE extensions
 * **Basic understanding of:** LLMs, prompt engineering, Python development, and the Kleros protocol.
 
@@ -229,7 +228,7 @@ The tool outputs profiles (e.g., as JSON Lines - one JSON object per line in a f
  *Stanford Webinar - Agentic AI: A Progression of Language Model Usage* [Agentic AI Overview & Concepts](youtube.com/watch?v=kJLiOGle3Lw):   In this webinar, you will gain an introduction to the concept of agentic language models (LMs) and their usage. You will learn about common limitations of LMs and agentic LM usage patterns, such as reflection, planning, tool usage, and iterative LM usage. 
 
 
-## Troubleshooting
+<!--## Troubleshooting
 
 * **Issue:** `AuthenticationError` or `401 Unauthorized` when calling LLM API.
     * **Solution:** Verify your API key in the `.env` file is correct and has not expired. Ensure the `.env` file is being loaded correctly by the application. Check your account status with the LLM provider.
@@ -237,7 +236,7 @@ The tool outputs profiles (e.g., as JSON Lines - one JSON object per line in a f
     * **Solution:** Adjust LLM parameters (e.g., increase `temperature`). Refine prompts to encourage more varied outputs. Check customization guide (`docs/customization.md`).
 * **Issue:** Script runs out of memory.
     * **Solution:** Reduce batch size for generation. If using local models, ensure sufficient RAM/VRAM.
-* **(Link to more troubleshooting tips or GitHub Issues)**
+* **(Link to more troubleshooting tips or GitHub Issues)** -->
 
 ## Contributing 
 
@@ -255,7 +254,7 @@ Contributions are welcome! If you want to improve the generation logic, add feat
 
 ## License
 
-This project is licensed under the [Your Chosen License, e.g., MIT License] - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Contact
 
@@ -274,7 +273,8 @@ alpha progress, keep it lean
 2.  **[Customizing Juror Generation]** ./docs/customization.md:* Modifying the core logic. This might include: Editing LLM prompts, Adjusting generation parameters (temperature, max tokens), Defining new juror archetypes or attributes, Fine-tuning a model (if applicable and documented).
 3.  **[Schema detail]** .docs/output-schema.md:* for a detailed schema description.
 4.  **[Test Profiles (Running the Tool)]** ./docs/generating-profiles.md:** Step-by-step instructions on how to execute the main script(s) to produce a batch of juror profiles. Includes command-line arguments, configuration options, and expected output.
+5.  **Keep it Updated:** As the development or deployment process changes, remember to update the README and the runbook documents. v0.0.4
 
-5.  **Keep it Updated:** As the development or deployment process changes, remember to update the README and the runbook documents. v0.0.2
-6.  **Add Visuals (Optional):** Screenshots or simple diagrams (using tools like MermaidJS supported by GitHub Markdown) can significantly improve understanding. //CONSIDER
-7.  **Add DIR:** `/prompts` (for prompt recomendations) //to continue line 147
+TO CONSIDER  
+1. **Add Visuals:** Screenshots or simple diagrams (using tools like MermaidJS supported by GitHub Markdown) can significantly improve understanding. 
+7.  **Add dir:** `/prompts` (for prompt recomendations) //to continue line 147
