@@ -2,7 +2,8 @@
 
 **This tool integrates the costumization of LLMs to generate diverse, simulated juror profiles for testing and analysis within the Kleros (not afiliated) decentralized justice ecosystem. This repository provides the instructions for its development, customization, and test execution.**
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
+[![License: MIT](...)]()
+[![Python Version](...)]()
 
 ## Overview
 
@@ -12,10 +13,10 @@ Conceptually, this tool functions as an **agentic AI system**. It takes high-lev
 
 The primary goals of this project and runbook are to:
 
-1.  Provide a framework for **generating synthetic juror data** reflecting potential real-world diversity (or specific simulated characteristics).
-2.  Offer clear instructions for **setting up a development environment** to work on the generation logic.
-3.  Guide users on **customizing the generation process** (e.g., modifying prompts, parameters, juror archetypes).
-4.  Detail how to **run the tool to generate test batches** of juror profiles.
+1. Provide a framework for **generating synthetic juror data** reflecting potential real-world diversity (or specific simulated characteristics).
+2. Offer clear instructions for **setting up a development environment** to work on the generation logic.
+3. Guide users on **customizing the generation process** (e.g., modifying prompts, parameters, juror archetypes).
+4. Detail how to **run the tool to generate test batches** of juror profiles.
 
 
 **Ethical Considerations & Disclaimer:**
@@ -150,13 +151,7 @@ This repository is structured around the core tasks. Follow the guides linked be
     * **Generation Parameters:** Tweaking settings like `temperature`, `top_p`, `max_tokens` (often configurable via `config.yaml` or command-line args).
     * **Backend Logic:** Modifying the Python code (`generate_jurors.py` or similar) to handle different LLM clients (OpenAI, Anthropic, VertexAI, Hugging Face Transformers, local models via libraries like `litellm` or custom wrappers), potentially using different parameters or prompt formats suited to each.
     * **Archetype Definition:** Changing how different types of jurors are defined or requested.
-3.  **[Generating Test Profiles (Running the Tool)](./docs/generating-profiles.md):** Step-by-step instructions on how to execute the main script(s) to produce a batch of juror profiles. Includes command-line arguments, configuration options, and expected output.
-4.  **[Further Reading](#further-reading--conceptual-background):** Advanced prompting techniques and agentic design patterns Topics include:
-    * Editing LLM prompts.
-    * Adjusting generation parameters (temperature, max tokens).
-    * Defining new juror archetypes or attributes.
-    * Fine-tuning a model (if applicable and documented).
-
+3.  **[Generating Test Profiles (Running the Tool)](./docs/generating-profiles.md):** Executing the main generation script (e.g., `python generate_jurors.py --count 10 --output profiles.json`). This guide details command-line arguments and usage.
 
 ## Technology Stack
 

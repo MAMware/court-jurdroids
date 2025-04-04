@@ -1,25 +1,13 @@
-# jurDroids a Kleros Juror Profile Generator - Development & Testing Runbook
+# Kleros Juror Profile Generator - Development & Testing Runbook
 
-**An LLM-based tool for generating diverse, simulated juror profiles for testing and analysis within the Kleros decentralized justice ecosystem. This repository provides the runbook for its development, customization, and test execution.**
+**(Brief Description - same as before)**
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
+[![License: MIT](...)]()
+[![Python Version](...)]()
 
 ## Overview
 
-This repository contains the code and documentation for an AI tool that leverages Large Language Models (LLMs) to create varied and nuanced juror profiles. These generated profiles are intended **strictly for simulation, testing, and research purposes** related to the Kleros protocol.
-
-Conceptually, this tool functions as an **agentic AI system**. It takes high-level instructions and uses LLM capabilities (potentially including planning, reasoning, and using specific knowledge sources) to generate complex, structured outputs in the form of juror profiles. For a deeper dive into Agentic AI concepts, see the video linked in the [Further Reading](#further-reading--conceptual-background) section.
-
-The primary goals of this project and runbook are to:
-
-1.  Provide a framework for **generating synthetic juror data** reflecting potential real-world diversity (or specific simulated characteristics).
-2.  Offer clear instructions for **setting up a development environment** to work on the generation logic.
-3.  Guide users on **customizing the generation process** (e.g., modifying prompts, parameters, juror archetypes).
-4.  Detail how to **run the tool to generate test batches** of juror profiles.
-
-
-**Ethical Considerations & Disclaimer:**
-*This tool generates synthetic data for **testing and simulation only**. The generated profiles may inadvertently reflect biases present in the underlying LLM training data. They should **never** be used to make assumptions about real individuals or influence real dispute resolutions. Use responsibly and be aware of the limitations and potential ethical implications.*
+**(Same as previous version, including Agentic AI mention and Ethical Considerations)**
 
 ## Table of Contents
 
@@ -37,36 +25,21 @@ The primary goals of this project and runbook are to:
 * [Output Format & Traceability](#output-format--traceability)
 * [Further Reading / Conceptual Background](#further-reading--conceptual-background)
 * [Troubleshooting](#troubleshooting)
-* [Contributing](#contributing)
+* [Contributing](#contributing) (Optional)
 * [License](#license)
-* [Contact](#contact)
+* [Contact](#contact) (Optional)
 
 ## Who is this for?
 
-* **Kleros Researchers & Analysts:** Simulating court scenarios, testing mechanism designs, studying potential voting patterns.
-* **Developers:** Working on the juror generation tool itself or integrating simulated jurors into other Kleros-related testing tools.
-* **Protocol Developers:** Stress-testing Kleros contracts or UIs with diverse simulated juror data.
+**(Same as previous version)**
 
 ## Prerequisites
 
-Before you begin, ensure you have:
-
-* **Git:** For cloning the repository and version control.
-* **[Programming Language & Version]:** e.g., Python 3.9+, Node.js 18+, Go 1.20+
-* **[Package Manager]:** e.g., pip, npm, yarn
- **[Cloud Provider CLI/Account (if applicable)]:** e.g., AWS CLI, Google Cloud SDK, Azure CLI (with necessary permissions for test deployment)
- * **[LLM Access]:** An API key for [Specify LLM Provider, e.g., OpenAI, Anthropic, Cohere] or access to a local LLM setup (if applicable).
-* **[Specific Tools/Libraries]:** e.g., Terraform, Ansible, specific IDE extensions
-* **Basic understanding of:** LLMs, prompt engineering, Python development, and the Kleros protocol.
+**(Same as previous version, ensure it lists Python, pip, Git, LLM access/keys)**
 
 ## Getting Started
 
-### Cloning the Repository
-
-```bash
-git clone [https://github.com/MAMware/court-jurdroids.git]
-cd [court-jurdroids]
-```
+**(Cloning - same as previous version)**
 
 ### Installation & Setup
 
@@ -76,7 +49,7 @@ cd [court-jurdroids]
 
 This tool is designed to be potentially adaptable to various LLM backends. The core configuration happens via environment variables and potentially configuration files (`config.yaml`).
 
-1.  
+1.  **Environment Variables (`.env`):** Primarily used for API keys and secrets.
     ```bash
     cp .env.example .env
     # Edit .env with your specific keys and endpoints
@@ -146,10 +119,10 @@ This tool is designed to be potentially adaptable to various LLM backends. The c
 
 ## Output Format & Traceability
 
-The tool outputs profiles (e.g., as JSON Lines - one JSON object per line in a file). A key goal is **traceability** for reproducibility and analysis. Each generated profile should include metadata such as:
+The tool outputs profiles (e.g., as JSON Lines - one JSON object per line in a file). A key goal is **traceability** for reproducibility and analysis. Each generated profile should include metadata:
 
 ```json
-// Example JSON structure
+// Example JSON structure for one profile
 {
   "jurorId": "sim-juror-abc123",
   "profile": {
@@ -180,29 +153,3 @@ The tool outputs profiles (e.g., as JSON Lines - one JSON object per line in a f
     // "scriptVersion": "v0.2.1"
   }
 }
-```
-* Including `llmModelName`, `promptTemplateId`, `generationParameters`, and potentially a `seed` allows for better understanding and potential reproduction of results.
-* See `docs/output-schema.md` (optional) for details.
-
-## Further Reading / Conceptual Background
-
-**(Same as previous version - Link to Agentic AI video)**
-
-## Troubleshooting
-
-**(Same as previous version)**
-
-## Contributing (Optional)
-
-**(Same as previous version)**
-
-## License
-
-**(Same as previous version)**
-
-## Contact (Optional)
-
-**(Same as previous version)**
-```
-
-I've updated the configuration section to show examples for various backends within `.env` and clarified that customization for platforms happens in config/code. I also significantly expanded the `generationMetadata` in the Output Format section to explicitly cover traceability aspects like model used, prompt version, parameters, and optional seeding. Let me know what you think!
