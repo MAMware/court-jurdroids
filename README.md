@@ -262,7 +262,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 <!-- ----------------------------------------------------------------- -->
 
-TO DO (keep it lean, alpha stage v0.0.5)
+TO DO (keep it lean, current readme.md is at alpha stage v0.0.5)
 
 **Generate the contented for the files** 
 
@@ -274,4 +274,4 @@ TO DO (keep it lean, alpha stage v0.0.5)
 
 TO CONSIDER  
 1. **Adding visuals:** Screenshots or simple diagrams (using tools like MermaidJS supported by GitHub Markdown) can significantly improve understanding. 
-7. **Add dir:** `/prompts` (for prompt recomendations) //revisit line 147
+7. **Add dir:** `/prompts` (for prompt recomendations) 
