@@ -1,12 +1,12 @@
 # jurDroids a virtual Juror profile generator
 
-**This tool integrates the costumization of LLMs to generate diverse, simulated juror profiles for testing and analysis within decentralized justice systems like Kleros (not afiliated).** 
+**This tool integrates the customization of LLMs to generate diverse, simulated juror profiles for testing and analysis within decentralized justice systems like Kleros (not afiliated).** 
 **This repository provides the instructions for its development, customization, and test execution.**
 
 
 ## Overview
 
-This repository containsthe documentation and code for an AI tool that uses Large Language Models (LLMs) to create varied and nuanced juror profiles. These generated profiles are intended **strictly for simulation, testing, and research purposes** related to decentralized justice systems.
+This repository contains the documentation and code for an AI tool that uses Large Language Models (LLMs) to create varied and nuanced juror profiles. These generated profiles are intended **strictly for simulation, testing, and research purposes** related to decentralized justice systems.
 
 Conceptually, this tool functions as an **agentic AI system**. It takes high-level instructions and uses LLM capabilities (potentially including planning, reasoning, and using specific knowledge sources) to generate complex, structured outputs in the form of juror profiles. For a deeper dive into Agentic AI concepts, see the video linked in the [Further Reading](#further-reading--conceptual-background) section.
 
@@ -43,7 +43,7 @@ The primary goals of this project and runbook are to:
 
 ## Who is this for?
 
-* **Researchers & Analysts:** Who are simulating court scenarios, testing mechanism designs, studying potential voting patterns.
+* **Researchers & Analysts:** Simulating court scenarios, testing mechanism designs, studying potential voting patterns.
 * **Developers:** Working on the juror generation tool itself or integrating simulated jurors into other Kleros-related testing tools.
 * **Protocol Developers:** Stress-testing Kleros contracts with diverse simulated juror data.
 
@@ -64,8 +64,8 @@ Before you begin, ensure you have:
 ### Cloning the Repository
 
 ```bash
-git clone [https://github.com/MAMware/court-jurdroids.git]
-cd [court-jurdroids]
+git clone https://github.com/MAMware/court-jurdroids.git
+cd court-jurdroids
 ```
 
 ### Installation & Setup
@@ -104,7 +104,7 @@ The tool requires access to an LLM API. Configure your API key securely: **Envir
         # OPENAI_MODEL_NAME="gpt-4-turbo-preview"
 
         # For Azure OpenAI
-        # AZURE_OPENAI_ENDPOINT="[https://your-instance.openai.azure.com/](https://www.google.com/search?q=https://your-instance.openai.azure.com/)"
+        # AZURE_OPENAI_ENDPOINT="[https://your-instance.openai.azure.com/]"
         # AZURE_OPENAI_API_KEY="your-azure-key"
         # AZURE_DEPLOYMENT_NAME="your-deployment-id" # Model deployment name
 
@@ -220,7 +220,7 @@ The tool outputs profiles (e.g., as JSON Lines - one JSON object per line in a f
 ```
 *(Adjust the example to match your actual output)*
 
-* See `docs/output-schema.md`for details.
+* See `./docs/output-schema.md`for details.
 
 ## Further Reading / Conceptual Background
 
@@ -244,7 +244,7 @@ Contributions are welcome! If you want to improve the generation logic, add feat
 1.  Fork the repository.
 2.  Create a new branch (`git checkout -b feature/your-improvement`).
 3.  Make your changes.
-4.  Ensure your changes are well-documented, tested adherence to ethical guidelines. (if applicable).
+4.  Ensure your changes are well-documented, tested, adhering to ethical guidelines. (if applicable).
 5.  Commit your changes (`git commit -m 'Add feature: your improvement'`).
 6.  Push to the branch (`git push origin feature/your-improvement`).
 7.  Open a Pull Request.
