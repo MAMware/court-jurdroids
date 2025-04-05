@@ -37,7 +37,8 @@ Each JSON object (representing one juror) has the following top-level keys:
 | `expertiseAreas`   | `List[String]` | A list of areas where the juror possesses specific knowledge or expertise relevant to potential cases.    | `["statistics", "machine learning", "market analysis"]`                   |
 | `cognitiveProfile` | `String`       | Description of the juror's thinking style, potential biases, decision-making tendencies, or personality traits. | `"Prone to analytical thinking, slightly risk-averse, values empirical evidence."` |
 | `platformActivity` | `String`       | A *simulated* summary of the juror's past activity or performance within the justice platform context.      | `"Simulated: 25 cases judged, 92% coherence."`                            |
-| *(other fields)* | *(various)* | Additional fields may be generated depending on the specific prompt template used.                         |                                                                         |
+| `personalityType`   | `String`       | *(New)* Personality classification based on a standardized framework.                                         | `"INTJ"`                                                               |
+| `personalityDetails`| `Object`       | *(New)* Detailed breakdown of personality traits using a chosen system (e.g., MBTI, Big Five).                | `{ "system": "MBTI", "type": "INTJ", "traits": ["strategic", "decisive"] }` |
 
 ---
 
@@ -88,7 +89,13 @@ Here is an example of a single JSON object representing one juror profile:
     "background": "Data scientist with a background in behavioral economics.",
     "expertiseAreas": ["statistics", "machine learning", "market analysis"],
     "cognitiveProfile": "Prone to analytical thinking, slightly risk-averse, values empirical evidence.",
-    "platformActivity": "Simulated: 25 cases judged, 92% coherence."
+    "platformActivity": "Simulated: 25 cases judged, 92% coherence.",
+    "personalityType": "INTJ",
+    "personalityDetails": {
+      "system": "MBTI",
+      "type": "INTJ",
+      "traits": ["strategic", "future-focused", "decisive"]
+    }
   },
   "generationMetadata": {
     "generationTimestamp": "2025-04-01T09:30:00Z",
