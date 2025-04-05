@@ -1,14 +1,18 @@
 # Generating Test Profiles (Running the Tool)
 
-This guide provides step-by-step instructions on how to execute the main script (e.g., `generate_jurors.py`) to produce a batch of simulated juror profiles.
+This guide provides step-by-step instructions on how to execute the main script (e.g., `generate_jurors.py`) to produce a batch of simulated juror profiles, including standardized personality traits.
+
+---
 
 ## Prerequisites
 
 Before running the generation script, ensure you have:
 
-1.  Completed the **Development Environment Setup** as described in [`development.md`](./development.md).
-2.  Configured your **Backend LLM Access** (API keys, etc.) in the `.env` file as detailed in the main [README](../README.md#backend-configuration-llm-access).
-3.  Activated your Python virtual environment (`source venv/bin/activate` or `.\venv\Scripts\activate`).
+1. **Completed Environment Setup:** Follow the instructions in [`development.md`](./development.md).
+2. **Backend LLM Access Configured:** Ensure API keys and other secrets are correctly set in the `.env` file as described in the main [README](../README.md#backend-configuration-llm-access).
+3. **Activated Virtual Environment:** Activate your Python environment (`source venv/bin/activate` on Linux/macOS or `.\venv\Scripts\activate` on Windows).
+
+---
 
 ## Basic Usage
 
@@ -22,30 +26,22 @@ python generate_jurors.py
 
 ## Command-Line Arguments
 
-You can control the generation process using command-line arguments. Here are common arguments (the exact names and availability might differ – use `python generate_jurors.py --help` to get the definitive list):
+Use the following arguments to customize the generation process (run `python generate_jurors.py --help` for a full list):
 
-* `--help`: Displays the help message listing all available arguments and their descriptions.
-* `--count <NUMBER>` or `-c <NUMBER>`:
-    * **Description:** Specifies the number of juror profiles to generate.
-    * **Example:** `--count 10`
-* `--output <FILE_PATH>` or `-o <FILE_PATH>`:
-    * **Description:** Specifies the file path to save the generated profiles. Output is typically in JSON Lines format (`.jsonl`). If not provided, output might go to standard output (console) or a default file (e.g., `output_profiles.jsonl`).
-    * **Example:** `--output ./data/generated_profiles_batch_1.jsonl`
-* `--model-name <MODEL_ID>`:
-    * **Description:** Overrides the default LLM model name specified in `.env` or `config.yaml`. Use the specific model ID relevant to your configured backend (e.g., "gpt-4-turbo", "gemini-1.0-pro", "mistralai/Mistral-7B-Instruct-v0.1").
-    * **Example:** `--model-name gpt-3.5-turbo`
-* `--temperature <VALUE>`:
-    * **Description:** Overrides the default temperature setting (controls creativity/randomness). Value typically between 0.0 and 1.0.
-    * **Example:** `--temperature 0.5`
-* `--prompt-template <TEMPLATE_ID>`:
-    * **Description:** Specifies which prompt template to use (if multiple are defined, e.g., corresponding to files in `/prompts` or keys in `config.yaml`). Uses the template identified by `<TEMPLATE_ID>`.
-    * **Example:** `--prompt-template juror_detailed_v2`
-* `--archetype <ARCHETYPE_NAME>`:
-    * **Description:** Requests the generation of a specific juror archetype (if the script supports predefined archetypes).
-    * **Example:** `--archetype skeptical_expert`
-* `--seed <NUMBER>`:
-    * **Description:** *(Optional)* Provides a random seed for the generation process, aiming for potentially reproducible outputs (depends heavily on LLM backend support).
-    * **Example:** `--seed 42`
+| Argument                  | Description                                                                                 | Example                                         |
+|---------------------------|---------------------------------------------------------------------------------------------|-----------------------------------------------|
+| `--count <NUMBER>` / `-c` | Number of juror profiles to generate.                                                       | `--count 10`                                  |
+| `--output <FILE_PATH>` / `-o` | File path for saving generated profiles in JSON Lines format (`.jsonl`).                    | `--output ./data/generated_profiles.jsonl`    |
+| `--model-name <MODEL_ID>` | Overrides the default LLM model name (e.g., "gpt-4-turbo").                                 | `--model-name gpt-4-turbo`                    |
+| `--temperature <VALUE>`   | Controls creativity/randomness (0.0–1.0). Lower values produce more deterministic results.  | `--temperature 0.7`                           |
+| `--prompt-template <ID>`  | Specifies a custom prompt template from `/prompts` directory.                               | `--prompt-template juror_detailed_v2`         |
+| `--archetype <NAME>`      | Requests generation of a specific juror archetype (if predefined in prompts).               | `--archetype analytical_expert`              |
+| `--traits <FRAMEWORK_ID>` |  Defines a personality trait framework for profiles (e.g., "MBTI", "Big Five").             | `--traits MBTI`                               |
+| `--seed <NUMBER>`         | Sets a random seed for reproducible outputs (depends on backend support).                   | `--seed 42`                                   |
+| `--verbose`               | Enables verbose logging mode for detailed runtime diagnostics.                              | `--verbose`                                   |
+| `--fallback-template <ID>`| Fallback template to use if the primary one fails or is not found. (doubts abouit this one) | `--fallback-template default_template`        |
+
+---
 
 ## Configuration Precedence
 
@@ -58,6 +54,8 @@ Settings are typically applied in the following order (higher numbers override l
 
 ## Examples
 
+Here are examples of how to use the script with different configurations:
+
 ```bash
 # Generate 5 profiles using defaults, output to console (if default)
 python generate_jurors.py --count 5
@@ -65,28 +63,40 @@ python generate_jurors.py --count 5
 # Generate 50 profiles and save to a specific file
 python generate_jurors.py -c 50 -o ./output/kleros_test_batch_A.jsonl
 
-# Generate 10 profiles using a specific model and lower temperature
-python generate_jurors.py -c 10 --model-name gpt-4o --temperature 0.4 -o low_temp_profiles.jsonl
+# Generate 10 profiles with MBTI personality traits
+python generate_jurors.py -c 10 --traits MBTI --output mbti_profiles.jsonl
 
-# Generate 20 profiles using a specific prompt template
-python generate_jurors.py -c 20 --prompt-template juror_summary_v1 --output summary_profiles.jsonl
+# Generate 20 profiles with Big Five traits and custom model settings
+python generate_jurors.py -c 20 --traits BigFive --model-name gpt-4-turbo --temperature 0.5 -o bigfive_profiles.jsonl
 
-# Generate 5 profiles of a specific archetype (if supported)
-python generate_jurors.py -c 5 --archetype detail_oriented_novice --output novice_profiles.jsonl
+# Generate profiles with a specific archetype
+python generate_jurors.py -c 5 --archetype justice_oriented --output justice_profiles.jsonl
+
+# Generate profiles with fallback prompt template
+python generate_jurors.py -c 10 --prompt-template invalid_template --fallback-template default_template -o fallback_profiles.jsonl
+
+# Enable verbose logging during generation
+python generate_jurors.py --verbose -c 5 -o verbose_profiles.jsonl
 ```
 
 ## Expected Output
 
 When you run the script:
 
-1.  You might see log messages printed to the console indicating progress, models used, connection status, and any potential errors.
-2.  If an `--output` file is specified, the script will create or overwrite this file.
-3.  The output file will contain the generated profiles, typically one complete JSON object per line (JSON Lines format).
-4.  Refer to the [`output-schema.md`](./output-schema.md) document for a detailed description of the JSON structure within the output file.
+1. **Console Output:** Log messages indicate progress, including models used, connection status, and any errors.
+2. **Generated File:** If `--output` is specified, the script creates or overwrites the file.
+3. **Profile Format:** Each profile is a single JSON object written per line in JSON Lines format (`.jsonl`).
+4. **Schema Details:** Refer to the [`output-schema.md`](./output-schema.md) document for detailed JSON structure.
+
+---
 
 ## Runtime Troubleshooting
 
-* **API Errors (`AuthenticationError`, `RateLimitError`, etc.):** Double-check your API keys in `.env`, ensure your account with the LLM provider is active and has sufficient credits/quota. Verify network connectivity.
-* **`FileNotFoundError`:** Ensure any specified input files (like prompt templates if loaded dynamically by name) or output directories exist.
-* **Configuration Issues:** Verify variable names and values in `.env` and `config.yaml`. Use `--help` to confirm argument names.
-* **(Refer to the main README's Troubleshooting section for more general issues)**
+| Issue                                      | Possible Solution                                                                                   |
+|-------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| **API Errors** (`AuthenticationError`)    | Verify API keys in `.env`, check your backend account quota, and ensure network connectivity.       |
+| **File Not Found**                        | Confirm the existence of input files (e.g., templates) or directories specified in arguments.       |
+| **Model Misconfiguration**                | Check `model-name` in `.env` or `config.yaml`. Ensure the specified LLM model is supported.         |
+| **Output Errors**                         | Ensure output file paths are valid and writable.                                                   |
+
+--- 
