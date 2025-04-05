@@ -31,8 +31,10 @@ cd court-jurdroids
 
 ### 2. Create and Activate a Virtual Environment
  It's crucial to use a virtual environment to manage project dependencies separately.
+
 ```bash
 # Check if venv already exists; otherwise, create it (use 'python3' if needed)
+
 if [ ! -d "venv" ]; then
     python -m venv venv
 fi
@@ -42,12 +44,12 @@ fi
     source venv/bin/activate
     # On Windows:
     .\venv\Scripts\activate
-    ```
+```
     You should see `(venv)` prefixing your command prompt line.
 
 3.  **Install Dependencies:**
     Install all required packages, including development dependencies (like linters, formatters, testing tools if specified).
-    ```bash
+```bash
     # Ensure pip is up-to-date
     python -m pip install --upgrade pip
 
@@ -56,7 +58,7 @@ fi
 
     # Install development dependencies (if a separate file exists)
     # pip install -r requirements-dev.txt
-    ```
+```
     *(Note: If you don't have a separate `requirements-dev.txt`, ensure tools like Black, Flake8/Ruff, pytest are listed in the main `requirements.txt` or install them manually within the venv).*
 
 4.  **Configure Backend LLM Access:**
@@ -81,19 +83,19 @@ python generate_jurors.py --count 3 --output test_profiles.jsonl
 Follow standard Python guidelines (PEP 8). Run tools directly or integrate with pre-commit hooks.
 
 * **Formatting:** [e.g., Black]
-    ```bash
+```bash
     # Check formatting
     black --check .
     # Apply formatting
     black .
-    ```
+```
 * **Linting:** [e.g., Flake8 or Ruff]
-    ```bash
+ ```bash
     # Run linter (example using flake8)
     flake8 .
     # Or (example using ruff)
     # ruff check .
-    ```
+```
 * *(Adjust commands and tool names based on project configuration, e.g., using pre-commit hooks)*
 
 ## Testing
@@ -101,14 +103,14 @@ Follow standard Python guidelines (PEP 8). Run tools directly or integrate with 
 *(Describe how to run tests if applicable)*
 
 * **Framework:** [e.g., pytest]
-    ```bash
+```bash
     # Run all tests
     pytest
     # Run tests in a specific file
     # pytest tests/test_generation.py
     # Run tests with coverage (if configured)
     # pytest --cov=src
-    ```
+```
 * Ensure tests pass before committing changes or opening Pull Requests. Add new tests for new features or bug fixes.
 
 ## Debugging
@@ -120,11 +122,11 @@ Follow standard Python guidelines (PEP 8). Run tools directly or integrate with 
 ## Git Workflow (Recommended)
 
 1.  Create feature branches off the main branch (`main` or `master`).
-    ```bash
+```bash
     git checkout main
     git pull origin main
     git checkout -b feature/your-feature-name
-    ```
+```
 2.  Make your changes, commit regularly with clear messages.
 3.  Ensure code is formatted, linted, and tests pass.
 4.  Push your feature branch to the remote repository.
