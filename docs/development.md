@@ -45,7 +45,7 @@ fi
     # On Windows:
     .\venv\Scripts\activate
 ```
-    You should see `(venv)` prefixing your command prompt line.
+You should see `(venv)` prefixing your command prompt line.
 
 3.  **Install Dependencies:**
     Install all required packages, including development dependencies (like linters, formatters, testing tools if specified).
@@ -59,7 +59,7 @@ fi
     # Install development dependencies (if a separate file exists)
     # pip install -r requirements-dev.txt
 ```
-    *(Note: If you don't have a separate `requirements-dev.txt`, ensure tools like Black, Flake8/Ruff, pytest are listed in the main `requirements.txt` or install them manually within the venv).*
+*(Note: If you don't have a separate `requirements-dev.txt`, ensure tools like Black, Flake8/Ruff, pytest are listed in the main `requirements.txt` or install them manually within the venv).*
 
 4.  **Configure Backend LLM Access:**
     Set up your LLM API keys and other necessary configuration by creating and editing a `.env` file in the project root directory.
@@ -96,7 +96,7 @@ Follow standard Python guidelines (PEP 8). Run tools directly or integrate with 
     # Or (example using ruff)
     # ruff check .
 ```
-* *(Adjust commands and tool names based on project configuration, e.g., using pre-commit hooks)*
+*(Adjust commands and tool names based on project configuration, e.g., using pre-commit hooks)*
 
 ## Testing
 
