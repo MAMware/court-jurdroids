@@ -2,49 +2,85 @@
 
 This guide explains the various ways you can customize the `jurDroids` tool to generate juror profiles that meet your specific simulation or testing needs. Customization primarily involves adjusting configurations, modifying prompts, and potentially altering the core generation logic.
 
+---
+
 ## Overview of Customization Points
 
 You can influence the generated juror profiles by modifying:
 
-1.  **Backend Configuration:** Selecting the LLM provider and model.
-2.  **Prompt Templates:** Changing the instructions given to the LLM.
-3.  **Generation Parameters:** Adjusting settings like creativity (`temperature`) and output length.
-4.  **Juror Archetypes:** Defining the types or characteristics of jurors to be generated.
-5.  **Core Code Logic (Advanced):** Modifying the Python scripts for deeper changes.
-6.  **Fine-Tuning (Advanced/Optional):** Training a model specifically for this task.
+1. **Backend Configuration:** Selecting the LLM provider and model.
+2. **Prompt Templates:** Changing the instructions given to the LLM.
+3. **Generation Parameters:** Adjusting settings like creativity (`temperature`) and output length.
+4. **Juror Archetypes:** Defining the types or characteristics of jurors to be generated.
+5. **Core Code Logic (Advanced):** Modifying the Python scripts for deeper changes.
+6. **Fine-Tuning (Advanced/Optional):** Training a model specifically for this task.
 
 **Ethical Reminder:** When customizing profiles, remain mindful of the [Ethical Considerations & Disclaimer](../README.md#ethical-considerations--disclaimer) outlined in the main README. Avoid creating or reinforcing harmful stereotypes.
 
+---
+
 ## 1. Backend Configuration (LLM Selection)
 
-The choice of LLM backend (e.g., OpenAI, Azure OpenAI, Vertex AI, local models) can significantly impact the style, quality, and cost of generation.
+The choice of LLM backend (e.g., OpenAI, Azure OpenAI, Vertex AI, or local models) can significantly impact the style, quality, and cost of generation.
 
-* Configure your desired backend primarily through the `.env` file by setting the appropriate API keys, endpoints, and model names/deployment IDs.
-* Refer to the ["Backend Configuration (LLM Access)"](../README.md#backend-configuration-llm-access) section in the main README for detailed examples.
-* Some backend-specific settings might also be configurable in `config.yaml`[cite: 28].
+- **Configuration:** Set the desired backend via the `.env` file by specifying API keys, endpoints, and model names/deployment IDs.
+- **Multiple Backends:** To configure options for multiple backends, include these in `config.yaml`, or specify them dynamically via command-line arguments.
+  ```bash
+  python generate_jurors.py --llm-backend azure_openai
+  ```
+- Refer to the ["Backend Configuration (LLM Access)"](../README.md#backend-configuration-llm-access) section in the main README for detailed examples.
+
+---
 
 ## 2. Prompt Engineering
 
 This is often the **most impactful** way to customize the output. The prompts instruct the LLM on what kind of profile to generate.
 
-* **Location:** Prompt templates are typically stored in the `/prompts` directory [cite: 67] (as suggested in the main README notes). Each template might correspond to a specific type of juror or generation style.
-* **Editing:** Modify the text files in the `/prompts` directory. Experiment with:
-    * **Clarity and Specificity:** Be very clear about the desired attributes, background, cognitive style, expertise, etc.
-    * **Structure:** Use formatting (like headings or bullet points within the prompt) to guide the LLM's output structure.
-    * **Persona Definition:** Clearly define the persona or archetype you want the LLM to adopt when generating the profile.
-    * **Examples (Few-Shot Prompting):** Include examples of desired output profiles within the prompt itself (if supported well by the chosen LLM).
-* **Tracking:** Note the `promptTemplateId` included in the output metadata [cite: 42] to track which prompt version was used for generating a specific profile.
+### Location
+Prompt templates are stored in the `/prompts` directory. Each template corresponds to a specific type of juror or generation style.
+
+### Modifications
+Edit the text files in `/prompts` to customize the instructions given to the LLM. Here are some suggestions:
+
+1. **Clarity and Specificity:** Clearly describe desired attributes like the juror's background, expertise, or cognitive profile.
+2. **Structure:** Use formatting (headings, bullet points, or sections) to guide the LLM's output.
+3. **Persona Definition:** Explicitly define the juror archetype or personality traits.
+4. **Examples (Few-Shot Prompting):** Include example profiles in the prompt for higher-quality outputs.
+
+### Example Template
+Here’s an example prompt format for an analytical juror:
+```txt
+[Persona Definition]
+"Generate a juror who is highly analytical, detail-oriented, and skeptical of claims lacking empirical evidence."
+
+[Output Structure]
+"Cognitive profile, areas of expertise, background summary"
+```
+
+### Tracking
+Use the `promptTemplateId` field in the output metadata to track which prompt version was used for generating profiles.
+
+---
 
 ## 3. Adjusting Generation Parameters
 
-These parameters control the LLM's generation process:
+Generation parameters control the LLM's behavior. Key parameters include:
 
-* **`temperature`:** Controls randomness/creativity. Higher values (e.g., 0.8) produce more diverse but potentially less coherent text. Lower values (e.g., 0.2) make the output more focused and deterministic.
-* **`top_p`:** (Nucleus sampling) An alternative to temperature for controlling randomness.
-* **`max_tokens`:** Limits the maximum length of the generated profile text.
-* **Configuration:** These parameters can often be set:
-    * Globally in `config.yaml` (under `llm_defaults` perhaps)[cite: 28].
-    * Overridden via command-line arguments when running the generation script (e.g., `python generate_jurors.py --temperature 0.5`)[cite: 32]. Check the script's help (`--help`) for available arguments[cite: 36].
+| Parameter    | Description                           | Recommended Value |
+|--------------|---------------------------------------|-------------------|
+| `temperature`| Controls randomness and creativity.   | 0.7 for balanced output |
+| `top_p`      | Nucleus sampling control.             | 0.9 for diverse generation |
+| `max_tokens` | Maximum length of output.             | Adjust for profiles length |
+
+### Configuration
+- **Global Settings:** Configure parameters in `config.yaml` under `llm_defaults`.
+- **Overrides:** Use command-line arguments to override parameters dynamically:
+  ```bash
+  python generate_jurors.py --temperature 0.5 --top_p 0.8 --max_tokens 500
+  ```
+- Use the `--help` flag to explore available options.
+
+---
 
 ## 4. Defining Juror Archetypes
 
@@ -58,20 +94,46 @@ You might want to generate specific *types* of jurors (e.g., "skeptical expert,"
 
 ## 5. Modifying Backend Logic (Advanced)
 
-For more fundamental changes, you may need to edit the Python code[cite: 33]:
+For fundamental changes to how profiles are generated, edit the Python code directly.
 
-* **File:** Likely involves modifying the main generation script (e.g., `generate_jurors.py`) or related utility modules.
-* **Use Cases:**
-    * Adding support for a new LLM backend not currently covered.
-    * Implementing a different generation strategy (e.g., using ReAct patterns, multi-step generation).
-    * Integrating external tools or knowledge sources via function calling (if the LLM supports it).
-* **Caution:** This requires Python programming knowledge and understanding the existing codebase. Ensure you follow the development setup guide (`development.md`) and add tests for your changes.
+### File Locations:
+- **Main Generation Logic:** Found in `generate_jurors.py`.
+- **Utilities:** Check related helper modules.
 
-## 6. Fine-tuning (Advanced/Optional)
+### Use Cases:
+- Adding support for a new backend.
+- Implementing alternative generation strategies (e.g., multi-step prompting).
+- Integrating external knowledge sources for enhanced context.
 
-* **Concept:** Instead of relying on general-purpose models via prompting, you could fine-tune a base LLM (usually an open-source one like Llama or Mistral) specifically on examples of juror profiles.
-* **Benefits:** Can potentially yield better results for the specific task and might be cheaper to run inference on (if using a smaller fine-tuned model).
-* **Challenges:** Requires a dataset of high-quality example profiles, significant computational resources (GPU time) for training, and expertise in model training procedures.
-* **Guidance:** This is beyond the scope of basic customization. If you pursue this, consult documentation and resources specific to LLM fine-tuning (e.g., Hugging Face Transformers documentation, platform-specific guides like Vertex AI tuning).
+### Caution:
+These changes require a good understanding of Python and the codebase. Ensure thorough testing of all modifications.
 
-Remember to test your customizations thoroughly to ensure they produce the desired results and align with the project's ethical guidelines[cite: 55].
+---
+
+## 6. Fine-Tuning (Advanced/Optional)
+
+### Concept
+Fine-tuning involves training an LLM on a dataset of example juror profiles for improved results.
+
+### Benefits
+- Tailored to your task.
+- Potentially more cost-effective for inference when using smaller fine-tuned models.
+
+### Challenges
+- Requires high-quality datasets and computational resources.
+- Expertise in LLM training procedures is essential.
+
+### Guidance
+Consult resources like Hugging Face Transformers documentation or platform-specific fine-tuning guides.
+
+---
+
+## Testing and Validation
+
+After customization, validate the changes to ensure they align with your objectives.
+
+- Run sample profile generations.
+- Verify outputs for consistency and quality.
+- Update or extend tests (e.g., using `pytest`) to cover new functionality.
+
+---
