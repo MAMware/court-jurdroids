@@ -2,29 +2,40 @@
 
 This guide details how to set up your local environment for developing, testing, and debugging the `jurDroids` juror profile generator.
 
+---
+
 ## Prerequisites
 
 Ensure you have the following installed:
 
-* **Git:** For cloning and version control. (See main [README](../README.md#cloning-the-repository))
-* **Python:** [Specify exact version, e.g., 3.9.x or 3.10.x]. Using a tool like `pyenv` to manage Python versions is recommended.
-* **pip:** Python's package installer (usually comes with Python).
-* **A Code Editor:** Recommended: Visual Studio Code with the Python extension.
+- **Git:** For cloning and version control.
+- **Python 3.9.x or higher:** Use tools like `pyenv` to manage Python versions efficiently.
+  ```bash
+  python --version
+  ```
+- **pip:** Python's package installer (comes with Python).
+- **Code Editor:** Recommended: Visual Studio Code with the Python extension.
+
+---
 
 ## Setup Steps
 
-1.  **Clone the Repository:**
-    If you haven't already, clone the project repository:
-    ```bash
-    git clone [https://github.com/MAMware/court-jurdroids.git](https://github.com/MAMware/court-jurdroids.git)
-    cd court-jurdroids
-    ```
+### 1. Clone the Repository
+ If you haven't already, clone the project repository:
+```bash
+git clone https://github.com/MAMware/court-jurdroids.git
+cd court-jurdroids
+```
 
-2.  **Create and Activate a Virtual Environment:**
-    It's crucial to use a virtual environment to manage project dependencies separately.
-    ```bash
-    # Create the virtual environment (use 'python3' if needed)
+---
+
+### 2. Create and Activate a Virtual Environment
+ It's crucial to use a virtual environment to manage project dependencies separately.
+```bash
+# Check if venv already exists; otherwise, create it (use 'python3' if needed)
+if [ ! -d "venv" ]; then
     python -m venv venv
+fi
 
     # Activate the virtual environment
     # On macOS/Linux:
@@ -67,7 +78,7 @@ python generate_jurors.py --count 3 --output test_profiles.jsonl
 
 ## Code Style and Linting
 
-We use standard Python code style guidelines (PEP 8) and enforce them using tools.
+Follow standard Python guidelines (PEP 8). Run tools directly or integrate with pre-commit hooks.
 
 * **Formatting:** [e.g., Black]
     ```bash
