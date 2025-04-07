@@ -52,11 +52,10 @@ The primary goals of this project and runbook are to:
 Before you begin, ensure you have:
 
 * **Git:** For cloning the repository and version control.
-* **Programming Language & Version:** e.g., Python 3.9+, Node.js 18+, Go 1.20+
-* **Package Manager:** e.g., pip, npm, yarn
-* **Cloud Provider or local CLI Account:** e.g., AWS CLI, Google Cloud SDK, Azure CLI
+* **Programming Language & Version:** Python 3.9+
+* **Package Manager:** pip
+* **Cloud Provider or local CLI Account:** e.g., Google Cloud SDK, Azure CLI
 * **LLM Access:** An API key for [Specify LLM Provider, e.g., OpenAI, Anthropic, Cohere] or access to a local LLM setup.
-* **Specific Tools/Libraries:** e.g., Terraform, Ansible, specific IDE extensions
 * **Basic understanding of:** LLMs, prompt engineering, Python development, and the Kleros protocol.
 
 ## Getting Started
@@ -70,8 +69,7 @@ cd court-jurdroids
 
 ### Installation & Setup
 
-//Work in progress
-<!-- 1.  **(Set up a Virtual Environment - Recommended):**
+1.  **(Set up a Virtual Environment - Recommended):**
     ```bash
     python -m venv venv
     source venv/bin/activate # On Windows use `venv\Scripts\activate`
@@ -80,9 +78,6 @@ cd court-jurdroids
     ```bash
     pip install -r requirements.txt
     ```
-3.  **(Download necessary models/data - if applicable):**
-    * *(Add instructions if users need to download specific model files, embeddings, etc.)* -->
-
 
 ### Backend Configuration (LLM Access)
 
