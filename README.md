@@ -100,6 +100,8 @@ This tool is designed to be potentially adaptable to various LLM backends. The c
 
 The tool requires access to an LLM API. Configure your API key securely: **Environment Variables (`.env`):** Primarily used for API keys and secrets.
 
+   * **Important:** Ensure `.env` is in `.gitignore`.
+
 1.  Copy the example environment file:
     ```bash
     cp .env.example .env
@@ -131,8 +133,7 @@ The tool requires access to an LLM API. Configure your API key securely: **Envir
         # LOCAL_LLM_MODEL_NAME="llama3"
         # LOCAL_LLM_API_KEY="ollama" # Or often not needed
         ```
-    * **Important:** Ensure `.env` is in `.gitignore`.
-
+ 
 2.  **Configuration File (`config.yaml` - Optional):** For non-sensitive settings like default model parameters, prompt template paths, etc.
     ```yaml
     # Example config.yaml structure
