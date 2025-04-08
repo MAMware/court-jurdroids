@@ -1,0 +1,17 @@
+# Dependencies for development: testing, linting, formatting
+# Install using: pip install -r requirements-dev.txt
+
+# Core dependencies (needed for development too)
+-r requirements.txt
+
+# Testing
+pytest>=7.0.0,<8.0.0
+pytest-cov>=4.0.0,<5.0.0
+
+# Linting & Formatting (using Ruff to replace Black and Flake8)
+# Ensure you configure ruff via pyproject.toml to enable formatting (mode=preview) and relevant lint rules
+ruff>=0.4.0,<1.0.0
+
+# Optional: If you still prefer separate tools (update versions as needed)
+# black>=23.0.0,<25.0.0
+# flake8>=6.0.0,<7.0.0

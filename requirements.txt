@@ -1,0 +1,22 @@
+# Core runtime dependencies for jurDroids
+# Essential for generating profiles via APIs
+
+python-dotenv>=1.0.0,<2.0.0
+PyYAML>=6.0,<7.0
+
+# --- LLM Backend Libraries ---
+
+# OpenAI SDK (also used for Azure OpenAI)
+openai>=1.10.0,<2.0.0
+
+# Google Cloud Vertex AI SDK
+google-cloud-aiplatform>=1.38.0,<2.0.0
+
+# Anthropic SDK
+anthropic>=0.15.0,<1.0.0
+
+# Optional: LiteLLM simplifies calling various LLM APIs including OpenAI, Azure, Vertex, Anthropic, HuggingFace, local models etc.
+# Consider using this to streamline multi-backend support.
+# If you use LiteLLM extensively, direct dependencies above might become optional for the code itself,
+# but LiteLLM still needs them installed. Keeping them listed is often clearer.
+litellm>=1.30.0,<2.0.0
