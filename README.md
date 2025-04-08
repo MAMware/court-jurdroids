@@ -72,8 +72,14 @@ cd court-jurdroids
 1.  **(Set up a Virtual Environment - Recommended):**
     ```bash
     python -m venv venv
-    source venv/bin/activate # On Windows use `venv\Scripts\activate`
+    source venv/bin/activate
+     ```
+    # On Windows
+    ```bash
+    python -m venv venv
+    venv\Scripts\activate
     ```
+    
 2.  **(Install Dependencies):**
     ```bash
     pip install -r requirements.txt
@@ -95,7 +101,7 @@ The tool requires access to an LLM API. Configure your API key securely: **Envir
     * **Example Variables:**
         ```dotenv
         # For OpenAI
-        OPENAI_API_KEY="sk-..."
+        # OPENAI_API_KEY="sk-..."
         # OPENAI_MODEL_NAME="gpt-4-turbo-preview"
 
         # For Azure OpenAI
