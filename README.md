@@ -69,17 +69,24 @@ cd court-jurdroids
 
 ### Installation & Setup
 
-1.  **(Set up a Virtual Environment - Recommended):**
+1.  **Recommended: Set up a Virtual Environment**
+    **On Linux/Mac**
     ```bash
     python -m venv venv
     source venv/bin/activate
      ```
-    # On Windows
+    **On Windows**
     ```bash
     python -m venv venv
     venv\Scripts\activate
     ```
-    
+    Troubleshooting
+    You might find an error on windows while trying to setup the virtual environment due to a security exception where the Activate.ps1 cannot be loaded becouse running scripts is disablaed on your system.
+    To enable you might to run
+    ```bash
+    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+    ```
+
 2.  **(Install Dependencies):**
     ```bash
     pip install -r requirements.txt

@@ -1,0 +1,40 @@
+# Default configuration for jurDroids
+# Copy this file to config.yaml and modify as needed.
+# This file *can* be committed to version control (unlike .env).
+
+# Default parameters for LLM generation
+# These can often be overridden by command-line arguments
+llm_defaults:
+  temperature: 0.7
+  max_tokens: 500
+  # top_p: 1.0 # Uncomment and set if you prefer using top_p
+
+# Default model names per backend (can be overridden by .env or --model-name arg)
+# Useful if you want a default other than what's suggested in .env.example comments
+default_models:
+  openai: "gpt-4o"
+  azure: "your_default_azure_deployment_name" # Specify your most common Azure deployment
+  vertexai: "gemini-1.5-flash-001"
+  huggingface: "mistralai/Mistral-7B-Instruct-v0.2"
+  local: "llama3:instruct"
+
+# Paths to prompt template files (relative to project root)
+# Assumes prompts are stored in a /prompts directory
+prompt_paths:
+  default_juror: "./prompts/juror_base_v1.txt"
+  skeptical_expert: "./prompts/juror_skeptic_v1.txt"
+  detail_novice: "./prompts/juror_novice_v1.txt"
+  # Add paths for other predefined prompts/archetypes
+
+# Backend-specific non-secret settings
+backend_settings:
+  azure_api_version: "2024-02-01" # Example, use the version appropriate for your setup
+
+# List of known/supported archetypes (optional, could be used by the script)
+# supported_archetypes:
+#   - default_juror
+#   - skeptical_expert
+#   - detail_novice
+
+# Default output file if not specified via command line
+# default_output_file: "generated_jurors.jsonl"
