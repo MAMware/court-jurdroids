@@ -92,6 +92,8 @@ cd court-jurdroids
     pip install -r requirements.txt
     ```
 
+#during first testing the requirements trigger dependecy issues, new files are being creating around this issue on upload v0.0.7. Recent updates: Ensuring that the tests directory is importable adding the _init_.py file. 
+
 ### Backend Configuration (LLM Access)
 
 This tool is designed to be potentially adaptable to various LLM backends. The core configuration happens via environment variables and potentially configuration files (`config.yaml`).
