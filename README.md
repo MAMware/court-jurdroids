@@ -72,8 +72,8 @@ graph TD
         direction LR
         A1 -->|Installs from| C1(requirements*.txt);
         A1 -->|Sets up| C2(Python Env / Codespaces);
-        C1 --> C2;
-        B1 --> C2  %% Link from .env to Env Setup (Comment outside line)
+        C1 --> C2; %% Env vars loaded into environment
+        B1 --> C2; %% Link from .env to Env Setup
     end
 
     subgraph Documentation
@@ -94,7 +94,7 @@ graph TD
 
     %% Connections between phases
     A1 -->|Runs script| E1;
-    C2 --> E1; # Script runs within environment
+    C2 --> E1; %% Script runs within environment
 ```
 
 ## Getting Started
