@@ -14,7 +14,7 @@ Ensure you have the following installed:
   python --version
   ```
 - **pip:** Python's package installer (comes with Python).
-- **Code Editor:** Recommended: Visual Studio Code with the Python extension.
+- **Code Editor:** Like Visual Studio Code with the Python extension.
 
 ---
 
@@ -32,6 +32,7 @@ cd court-jurdroids
 ### 2. Create and Activate a Virtual Environment
  It's crucial to use a virtual environment to manage project dependencies separately.
 
+
 ```bash
 # Check if venv already exists; otherwise, create it (use 'python3' if needed)
 
@@ -41,10 +42,10 @@ fi
 
     # Activate the virtual environment
     # On macOS/Linux:
-    source venv/bin/activate
-    # On Windows:
-    .\venv\Scripts\activate
+    source venv/bin/activate    
 ```
+
+
 You should see `(venv)` prefixing your command prompt line.
 
 3.  **Install Dependencies:**
@@ -56,10 +57,13 @@ You should see `(venv)` prefixing your command prompt line.
     # Install main dependencies
     pip install -r requirements.txt
 
-    # Install development dependencies (if a separate file exists)
-    # pip install -r requirements-dev.txt
+    # Install development dependencies for testing and linting        tools, needed only if you are developing or contributing to       the code.
+    pip install -r requirements-dev.txt
+
+    # Install the optional dependencies that contains libraries       for data analysis, visualization, or running local                transformer models, needed only if you plan to perform those      specific tasks.
+    # pip install -r requirements-optional.txt
+
 ```
-*(Note: If you don't have a separate `requirements-dev.txt`, ensure tools like Black, Flake8/Ruff, pytest are listed in the main `requirements.txt` or install them manually within the venv).*
 
 4.  **Configure Backend LLM Access:**
     Set up your LLM API keys and other necessary configuration by creating and editing a `.env` file in the project root directory.
@@ -80,27 +84,23 @@ python generate_jurors.py --count 3 --output test_profiles.jsonl
 
 ## Code Style and Linting
 
-Follow standard Python guidelines (PEP 8). Run tools directly or integrate with pre-commit hooks.
+Follow standard Python guidelines, PEP 8. Run tools directly or integrate with pre-commit hooks.
 
-* **Formatting:** [e.g., Black]
+* **Formatting:** 
 ```bash
     # Check formatting
     black --check .
     # Apply formatting
     black .
 ```
-* **Linting:** [e.g., Flake8 or Ruff]
+* **Linting:** 
  ```bash
     # Run linter (example using flake8)
     flake8 .
-    # Or (example using ruff)
-    # ruff check .
+   
 ```
-*(Adjust commands and tool names based on project configuration, e.g., using pre-commit hooks)*
 
 ## Testing
-
-*(Describe how to run tests if applicable)*
 
 * **Framework:** [e.g., pytest]
 ```bash
