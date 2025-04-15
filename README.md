@@ -87,7 +87,7 @@ cd court-jurdroids
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
     ```
 
-2.  **(Install Dependencies):**
+2.  **Install Dependencies:**
     ```bash
     pip install -r requirements.txt
     ```
@@ -269,15 +269,15 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Contact
 
 * For questions or support, please open an issue on GitHub.
-* Project Maintainer: [MAMware] - [marcosmeneses@mamware.net]
+* Project Maintainer: MAMware - [marcosmeneses@mamware.net]
 
 <!-- ----------------------------------------------------------------- -->
 
-TO DO (keep it lean, current readme.md is at alpha stage v0.0.6
+TO DO 
+keep it lean, current readme.md is at alpha stage v0.0.8
 
 1.  **Keep it Updated:** As the development or deployment process changes, remember to update the README and the related documents.
 
-TO CONSIDER  
+2. **Adding visuals:** Make simple diagrams using tools like MermaidJS supported by GitHub Markdown that can significantly improve understanding.
 
-1. **Adding visuals:** Screenshots or simple diagrams (using tools like MermaidJS supported by GitHub Markdown) can significantly improve understanding. 
-7. **Add dir:** `/prompts` (for prompt recomendations) 
+3. **Add dir:** `/prompts` for prompt recomendations
