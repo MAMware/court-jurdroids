@@ -58,6 +58,45 @@ Before you begin, ensure you have:
 * **LLM Access:** An API key for [Specify LLM Provider, e.g., OpenAI, Anthropic, Cohere] or access to a local LLM setup.
 * **Basic understanding of:** LLMs, prompt engineering, Python development, and the Kleros protocol.
 
+## Diagram
+```mermaid
+graph TD
+    subgraph Configuration
+        direction LR
+        A1(User/Developer) -->|Edits| B1(.env: Secrets);
+        A1 -->|Edits| B2(config.yaml: Defaults);
+        A1 -->|Edits| B3(prompts/*.txt: Templates);
+    end
+
+    subgraph Setup
+        direction LR
+        A1 -->|Installs from| C1(requirements*.txt);
+        A1 -->|Sets up| C2(Python Env / Codespaces);
+        C1 --> C2;
+        B1 --> C2; # Env vars loaded into environment
+    end
+
+    subgraph Documentation
+        direction LR
+        A1 -->|Consults / Creates| D1(README.md);
+        A1 -->|Consults / Creates| D2(docs/*.md);
+    end
+
+    subgraph Execution
+        direction TD
+        E1(generate_jurors.py) -->|Reads config| B2;
+        E1 -->|Loads secrets via code| B1;
+        E1 -->|Loads template| B3;
+        E1 -->|Calls API| F1(LLM Backend API <br/> e.g., Vertex AI, OpenAI);
+        F1 -->|Returns response| E1;
+        E1 -->|Writes output| G1(output.jsonl);
+    end
+
+    %% Connections between phases
+    A1 -->|Runs script| E1;
+    C2 --> E1; # Script runs within environment
+```
+
 ## Getting Started
 
 ### Cloning the Repository
