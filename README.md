@@ -72,7 +72,7 @@ graph TD
         direction LR
         A1 -->|Installs from| C1(requirements*.txt);
         A1 -->|Sets up| C2(Python Env / Codespaces);
-        C1 --> C2; %% Env vars loaded into environment
+        C1 --> C2; %% Environment variables loaded into the environment
         B1 --> C2; %% Link from .env to Env Setup
     end
 
