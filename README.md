@@ -120,8 +120,8 @@ cd court-jurdroids
     venv\Scripts\activate
     ```
     Troubleshooting
-    You might find an error on windows while trying to setup the virtual environment due to a security exception where the Activate.ps1 cannot be loaded becouse running scripts is disablaed on your system.
-    To enable you might to run
+    You might find an error on windows while trying to setup the virtual environment, it is due to a security exception where the Activate.ps1 cannot be loaded becouse running scripts is disablaed on your system.
+    To enable, try to execute
     ```bash
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
     ```
@@ -130,8 +130,6 @@ cd court-jurdroids
     ```bash
     pip install -r requirements.txt
     ```
-
-#during first testing the requirements trigger dependecy issues, new files are being creating around this issue on upload v0.0.7. Recent updates: Ensuring that the tests directory is importable adding the _init_.py file. 
 
 ### Backend Configuration (LLM Access)
 
@@ -320,3 +318,5 @@ keep it lean, current readme.md is at alpha stage v0.0.8
 2. **Adding visuals:** Make simple diagrams using tools like MermaidJS supported by GitHub Markdown that can significantly improve understanding.
 
 3. **Add dir:** `/prompts` for prompt recomendations
+
+4. **Check that the tests directory is importable by the added _init_.py file. 
