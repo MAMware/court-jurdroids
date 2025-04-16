@@ -72,8 +72,8 @@ graph TD
         direction LR
         A1 -->|Installs from| C1(requirements*.txt);
         A1 -->|Sets up| C2(Python Env / Codespaces);
-        C1 --> C2; %% Environment variables loaded into the environment
-        B1 --> C2; %% Link from .env to Env Setup
+        C1 --> C2;
+        B1 --> C2;
     end
 
     subgraph Documentation
@@ -83,7 +83,7 @@ graph TD
     end
 
     subgraph Execution
-        direction TD
+        direction TB
         E1(generate_jurors.py) -->|Reads config| B2;
         E1 -->|Loads secrets via code| B1;
         E1 -->|Loads template| B3;
@@ -94,7 +94,7 @@ graph TD
 
     %% Connections between phases
     A1 -->|Runs script| E1;
-    C2 --> E1; %% Script runs within environment
+    C2 --> E1; 
 ```
 
 ## Getting Started
