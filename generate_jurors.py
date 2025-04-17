@@ -22,6 +22,9 @@ def load_environment():
         "LLM_BACKEND": os.getenv("LLM_BACKEND"), # User might set a preferred default backend
         "LOG_LEVEL": os.getenv("LOG_LEVEL", "INFO").upper(),
 
+        # NVIDIA ---
+        "NVIDIA_API_KEY": os.getenv("NVIDIA_API_KEY")
+
         # OpenAI / Azure OpenAI
         "OPENAI_API_KEY": os.getenv("OPENAI_API_KEY"),
         # Add Azure specific vars if needed, e.g. os.getenv("AZURE_OPENAI_ENDPOINT")
@@ -100,7 +103,26 @@ def initialize_llm_client(final_config): # Pass the merged final_config
         except Exception as e:
             logging.error(f"Failed to initialize Vertex AI: {e}")
             raise
-
+   # --- NVIDIA Backend ---
+    elif backend == "nvidia":
+        api_key = final_config.get("NVIDIA_API_KEY")
+        if not api_key:
+            raise ValueError("Missing NVIDIA_API_KEY for nvidia backend.")
+        try:
+            # Initialize OpenAI client BUT point to NVIDIA endpoint
+            client = OpenAI(
+                base_url="https://integrate.api.nvidia.com/v1",
+                api_key=api_key
+            )
+            # Simple test? Listing models might not work same way, maybe skip test
+            # client.models.list() # This might fail or require different handling
+            logging.info("NVIDIA API Catalog client (via OpenAI interface) initialized successfully.")
+            return client, backend # Return the configured OpenAI client instance
+        except Exception as e:
+            logging.error(f"Failed to initialize NVIDIA client: {e}")
+            raise
+    # --- End  NVIDIA Backend ---
+    
     # TODO: Add other backends (Anthropic, LiteLLM integration, etc.) here
     # Example using LiteLLM (if installed and preferred):
     # elif backend == "litellm":
