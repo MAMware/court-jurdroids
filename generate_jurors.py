@@ -23,7 +23,7 @@ def load_environment():
         "LOG_LEVEL": os.getenv("LOG_LEVEL", "INFO").upper(),
 
         # NVIDIA ---
-        "NVIDIA_API_KEY": os.getenv("NVIDIA_API_KEY")
+        "NVIDIA_API_KEY": os.getenv("NVIDIA_API_KEY"),
 
         # OpenAI / Azure OpenAI
         "OPENAI_API_KEY": os.getenv("OPENAI_API_KEY"),
