@@ -141,38 +141,11 @@ The tool requires access to an LLM API. Configure your API key securely: **Envir
 
    * **Important:** Ensure `.env` is in `.gitignore`.
 
-1.  Copy the example environment file:
+1.  Copy the example environment file: Edit .env with your specific keys and endpoints
     ```bash
     cp .env.example .env
-    # Edit .env with your specific keys and endpoints
-    ```
-    * **Example Variables:**
-        ```dotenv
-        # For OpenAI
-        # OPENAI_API_KEY="sk-..."
-        # OPENAI_MODEL_NAME="gpt-4-turbo-preview"
-
-        # For Azure OpenAI
-        # AZURE_OPENAI_ENDPOINT="[https://your-instance.openai.azure.com/]"
-        # AZURE_OPENAI_API_KEY="your-azure-key"
-        # AZURE_DEPLOYMENT_NAME="your-deployment-id" # Model deployment name
-
-        # For Google Cloud Vertex AI
-        # GOOGLE_APPLICATION_CREDENTIALS="/path/to/your/keyfile.json"
-        # GCP_PROJECT_ID="your-gcp-project-id"
-        # GCP_LOCATION="us-central1"
-        # VERTEX_MODEL_NAME="gemini-1.0-pro" # Or other model ID
-
-        # For Hugging Face (Inference Endpoints or local)
-        # HF_API_TOKEN="hf_..." # For gated models or Inference API
-        # HF_MODEL_NAME="mistralai/Mistral-7B-Instruct-v0.1" # Example
-
-        # For Local/Open Source (if using something like Ollama or LM Studio)
-        # LOCAL_LLM_API_BASE="http://localhost:11434/v1" # Example for Ollama-compatible API
-        # LOCAL_LLM_MODEL_NAME="llama3"
-        # LOCAL_LLM_API_KEY="ollama" # Or often not needed
-        ```
- 
+      ```
+     
 2.  **Configuration File (`config.yaml` - Optional):** For non-sensitive settings like default model parameters, prompt template paths, etc.
     ```yaml
     # Example config.yaml structure
