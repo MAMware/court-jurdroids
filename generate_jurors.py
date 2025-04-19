@@ -69,12 +69,11 @@ def initialize_llm_client(final_config):
             raise ValueError(f"Missing {'OPENAI_API_KEY' if backend == 'openai' else 'XAI_API_KEY'} for {backend} backend.")
         try:
             client = OpenAI(api_key=api_key, base_url=base_url)
-            client.models.list()  # Test connection
-            logging.info(f"{backend.capitalize()} client initialized successfully.")
-            return client, backend
+            models = client.models.list()
+            logging.info(f"Available models for {backend}: {[model.id for model in models.data]}")
         except Exception as e:
-            logging.error(f"Failed to initialize {backend} client: {e}")
-            raise
+            logging.error(f"Failed to list models: {e}")
+    client.models.list()
 
     elif backend == "vertexai":
         project_id = final_config.get("GCP_PROJECT_ID")
@@ -102,9 +101,12 @@ def initialize_llm_client(final_config):
 
 # Step 4: Load Prompt Template
 def load_prompt_template(template_path):
+    logging.info(f"Loading prompt template from {template_path}")
     try:
         with open(template_path, "r") as file:
-            return file.read()
+            template = file.read()
+            logging.info(f"Prompt template content: {template}")
+            return template
     except FileNotFoundError:
         logging.error(f"Prompt template {template_path} not found.")
         raise
@@ -176,6 +178,7 @@ if __name__ == "__main__":
     logging.basicConfig(level=log_level, format='%(asctime)s - %(levelname)s - %(message)s')
 
     final_config = {**config_from_file, **env_vars, **vars(args)}
+    logging.info(f"Final configuration: {final_config}")
 
     try:
         llm_infra, backend = initialize_llm_client(final_config)
