@@ -14,6 +14,7 @@ llm_defaults:
 # Useful if you want a default other than what's suggested in .env.example comments
 default_models:
   openai: "gpt-3.5-turbo"
+  xai: "grok-3-mini-beta"
   #azure: "your_default_azure_deployment_name" # Specify your most common Azure deployment
   #vertexai: "gemini-1.5-flash-001"
   #huggingface: "mistralai/Mistral-7B-Instruct-v0.2"
@@ -38,4 +39,4 @@ default_models:
 #   - detail_novice
 
 # Default output file if not specified via command line
-# default_output_file: "generated_jurors.jsonl"
+default_output_file: "generated_jurors.jsonl"

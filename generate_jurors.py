@@ -30,10 +30,11 @@ def load_environment():
     """Load variables from .env file for supported backends."""
     load_dotenv()
     env_vars = {
-        "LLM_BACKEND": os.getenv("LLM_BACKEND"), # User might set a preferred default backend
+        "LLM_BACKEND": os.getenv("LLM_BACKEND"),
         "LOG_LEVEL": os.getenv("LOG_LEVEL", "INFO").upper(),
         "NVIDIA_API_KEY": os.getenv("NVIDIA_API_KEY"),
         "OPENAI_API_KEY": os.getenv("OPENAI_API_KEY"),
+        "XAI_API_KEY": os.getenv("XAI_API_KEY"),  # Add xAI API key
         "GOOGLE_APPLICATION_CREDENTIALS": os.getenv("GOOGLE_APPLICATION_CREDENTIALS"),
         "GCP_PROJECT_ID": os.getenv("GCP_PROJECT_ID"),
         "GCP_LOCATION": os.getenv("GCP_LOCATION"),
@@ -57,17 +58,22 @@ def initialize_llm_client(final_config):
     backend = final_config.get("backend") or final_config.get("LLM_BACKEND") or final_config.get("llm_backend", "openai")
     logging.info(f"Initializing LLM client for backend: {backend}")
 
-    if backend == "openai":
-        api_key = final_config.get("OPENAI_API_KEY")
+    if backend in ["openai", "xai"]:
+        if backend == "openai":
+            api_key = final_config.get("OPENAI_API_KEY")
+            base_url = "https://api.openai.com/v1"
+        else:  # xai
+            api_key = final_config.get("XAI_API_KEY")
+            base_url = "https://api.xai.com/v1"
         if not api_key:
-            raise ValueError("Missing OPENAI_API_KEY for openai backend.")
+            raise ValueError(f"Missing {'OPENAI_API_KEY' if backend == 'openai' else 'XAI_API_KEY'} for {backend} backend.")
         try:
-            client = OpenAI(api_key=api_key)
-            client.models.list()
-            logging.info("OpenAI client initialized successfully.")
+            client = OpenAI(api_key=api_key, base_url=base_url)
+            client.models.list()  # Test connection
+            logging.info(f"{backend.capitalize()} client initialized successfully.")
             return client, backend
         except Exception as e:
-            logging.error(f"Failed to initialize OpenAI client: {e}")
+            logging.error(f"Failed to initialize {backend} client: {e}")
             raise
 
     elif backend == "vertexai":
