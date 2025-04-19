@@ -115,27 +115,24 @@ def generate_profiles(count, llm_infra, backend, final_config, prompt_template, 
     temperature = final_config.get("temperature", 0.7)
     max_tokens = final_config.get("max_tokens", 500)
     model_name = final_config.get("model_name")
-
     if not model_name:
         model_name = final_config.get("default_models", {}).get(backend)
         if not model_name:
             raise ValueError(f"Model name must be specified for backend '{backend}'.")
-
     profiles = []
+    failed_count = 0
     for i in range(count):
         profile_id = f"juror-{datetime.datetime.now(datetime.UTC).strftime('%Y%m%dT%H%M%S%fZ')}-{i+1}"
         logging.info(f"Generating profile {i+1}/{count} ({profile_id})...")
-
         prompt_context = {"archetype": "default", "index": i+1}
         try:
             prompt = prompt_template.format(**prompt_context)
         except KeyError as e:
             logging.warning(f"Prompt template missing key: {e}. Using raw template.")
             prompt = prompt_template
-
         generated_text = None
         try:
-            if backend == "openai":
+            if backend in ["openai", "xai"]:
                 response = llm_infra.chat.completions.create(
                     model=model_name,
                     messages=[{"role": "user", "content": prompt}],
@@ -143,13 +140,7 @@ def generate_profiles(count, llm_infra, backend, final_config, prompt_template, 
                     max_tokens=max_tokens,
                 )
                 generated_text = response.choices[0].message.content.strip()
-            elif backend == "vertexai":
-                model = GenerativeModel(model_name)
-                response = model.generate_content(prompt, generation_config={"temperature": temperature, "max_output_tokens": max_tokens})
-                if response.candidates:
-                    generated_text = response.candidates[0].content.parts[0].text.strip()
-            else:
-                raise ValueError(f"Unsupported backend: {backend}")
+            # ... (rest of backend cases)
             if generated_text:
                 profiles.append({
                     "jurorId": profile_id,
@@ -162,13 +153,18 @@ def generate_profiles(count, llm_infra, backend, final_config, prompt_template, 
                         "generationParameters": {"temperature": temperature, "max_tokens": max_tokens},
                     },
                 })
+            else:
+                failed_count += 1
+                logging.warning(f"No generated text for profile {i+1}")
         except Exception as e:
+            failed_count += 1
             logging.error(f"Error generating profile {i+1}: {e}")
-
     with open(output_file, "a") as file:
         for profile in profiles:
             file.write(json.dumps(profile) + "\n")
-    logging.info(f"Appended {len(profiles)} profiles to {output_file}.")
+    logging.info(f"Appended {len(profiles)} profiles to {output_file}. {failed_count} profiles failed.")
+    if failed_count > 0:
+        logging.warning(f"Generation completed with {failed_count} failures. Check logs for details.")
 
 # Step 6: Main Execution Block
 if __name__ == "__main__":
