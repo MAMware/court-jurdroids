@@ -137,29 +137,18 @@ This tool is designed to be potentially adaptable to various LLM backends. The c
 
 ### API Key Configuration
 
-The tool requires access to an LLM API. Configure your API key securely: **Environment Variables (`.env`):** Primarily used for API keys and secrets.
+The tool requires access to an LLM API. 
 
-   * **Important:** Ensure `.env` is in `.gitignore`.
+*Important:** Configure your API key securely, ensure `.env` is in `.gitignore`.
 
-1.  Copy the example environment file: Edit .env with your specific keys and endpoints
+**Environment Variables (`.env`):** Primarily used for API keys and secrets.
+
+1.  Copy and rename the example environment file and edit the .env with your specific keys and endpoints
     ```bash
     cp .env.example .env
       ```
      
-2.  **Configuration File (`config.yaml` - Optional):** For non-sensitive settings like default model parameters, prompt template paths, etc.
-    ```yaml
-    # Example config.yaml structure
-    # llm_defaults:
-    #   temperature: 0.7
-    #   max_tokens: 500
-    # prompt_paths:
-    #   juror_base_prompt: "./prompts/juror_base_v1.txt"
-    # backend_settings:
-    #   # Platform-specific overrides if not using env vars alone
-    #   # e.g., azure_api_version: "2023-07-01-preview"
-    ```
-
-**(The actual code needs logic to read these variables/configs and instantiate the correct LLM client.)**
+2.  **Configuration File (`config.yaml`:** For non-sensitive settings like default model parameters, prompt template paths, etc.
 
 ## Runbook Sections
 
