@@ -13,7 +13,6 @@ You can influence the generated juror profiles by modifying:
 3. **Generation Parameters:** Adjusting settings like creativity (`temperature`) and output length.
 4. **Juror Archetypes:** Defining the types or characteristics of jurors to be generated.
 5. **Core Code Logic (Advanced):** Modifying the Python scripts for deeper changes.
-6. **Fine-Tuning (Advanced/Optional):** Training a model specifically for this task.
 
 **Ethical Reminder:** When customizing profiles, remain mindful of the [Ethical Considerations & Disclaimer](../README.md#ethical-considerations--disclaimer) outlined in the main README. Avoid creating or reinforcing harmful stereotypes.
 
@@ -39,7 +38,7 @@ This is often the **most impactful** way to customize the output. The prompts in
 ### Location
 Prompt templates are stored in the `/prompts` directory. Each template corresponds to a specific type of juror or generation style.
 
-### Modifications
+### Modifications (to validate and improve)
 Edit the text files in `/prompts` to customize the instructions given to the LLM. Here are some suggestions:
 
 1. **Clarity and Specificity:** Clearly describe desired attributes like the juror's background, expertise, or cognitive profile.
@@ -47,7 +46,7 @@ Edit the text files in `/prompts` to customize the instructions given to the LLM
 3. **Persona Definition:** Explicitly define the juror archetype or personality traits.
 4. **Examples (Few-Shot Prompting):** Include example profiles in the prompt for higher-quality outputs.
 
-### Example Template
+### Example Template (working on this)
 Here’s an example prompt format for an analytical juror:
 ```txt
 [Persona Definition]
@@ -82,7 +81,7 @@ Generation parameters control the LLM's behavior. Key parameters include:
 
 ---
 
-## 4. Defining Juror Archetypes
+## 4. Defining Juror Archetypes (working on this)
 
 You might want to generate specific *types* of jurors (e.g., "skeptical expert," "detail-oriented novice," "consensus-seeker").
 
@@ -107,24 +106,6 @@ For fundamental changes to how profiles are generated, edit the Python code dire
 
 ### Caution:
 These changes require a good understanding of Python and the codebase. Ensure thorough testing of all modifications.
-
----
-
-## 6. Fine-Tuning (Advanced/Optional)
-
-### Concept
-Fine-tuning involves training an LLM on a dataset of example juror profiles for improved results.
-
-### Benefits
-- Tailored to your task.
-- Potentially more cost-effective for inference when using smaller fine-tuned models.
-
-### Challenges
-- Requires high-quality datasets and computational resources.
-- Expertise in LLM training procedures is essential.
-
-### Guidance
-Consult resources like Hugging Face Transformers documentation or platform-specific fine-tuning guides.
 
 ---
 
