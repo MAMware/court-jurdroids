@@ -176,8 +176,8 @@ This repository is structured around the core tasks. Follow the guides linked be
 ## Technology Stack
 
 * **Core Language:** Python [Version]
-* **LLM Interaction:** [e.g., OpenAI Lib, Langchain, Hugging Face Transformers, Google Vertex AI SDK, LiteLLM (for multi-backend support)]
-* **Supported Backends (Potentially):** OpenAI API, Azure OpenAI, Google Vertex AI, Anthropic API, Hugging Face (Inference API/Transformers), Local models (via Ollama, LM Studio compatible APIs). *(Adjust based on actual implementation)*
+* **LLM Interaction (TO DO):**  OpenAI Lib, (Langchain, Hugging Face Transformers, Google Vertex AI SDK, LiteLLM (for multi-backend support))
+* **Tested supported Backends (TO DO):**  OpenAI API, (Azure OpenAI, Google Vertex AI, Anthropic API, Hugging Face (Inference API/Transformers), Local models (via Ollama, LM Studio compatible APIs)).
 * **Environment Management:** python-dotenv, potentially YAML reader (PyYAML).
 * **Agent Concepts/Patterns:** May employ techniques discussed in Agentic AI research, such as advanced prompting, planning, reflection, or Retrieval-Augmented Generation (RAG) to enhance profile quality and consistency. (See [Further Reading](#further-reading--conceptual-background)).
 * **Data Handling:** [e.g., Pandas, JSON, YAML]
@@ -248,15 +248,9 @@ The tool outputs profiles (e.g., as JSON Lines - one JSON object per line in a f
 **Understanding Agentic AI:** For a good overview of the concepts behind agentic systems, language models, prompting strategies, and design patterns that might be relevant to this tool, its recommened to watch this video *Stanford Webinar - Agentic AI: A Progression of Language Model Usage* [Agentic AI Overview & Concepts](https://www.youtube.com/watch?v=kJLiOGle3Lw) there you will find an introduction to the concept of agentic language models (LMs) and their usage. Common limitations of LMs and agentic LM usage patterns, such as reflection, planning, tool usage, and iterative LM usage. 
 
 
-<!--## Troubleshooting
+## Troubleshooting (link to new file)
 
-* **Issue:** `AuthenticationError` or `401 Unauthorized` when calling LLM API.
-    * **Solution:** Verify your API key in the `.env` file is correct and has not expired. Ensure the `.env` file is being loaded correctly by the application. Check your account status with the LLM provider.
-* **Issue:** Generated profiles seem repetitive or lack diversity.
-    * **Solution:** Adjust LLM parameters (e.g., increase `temperature`). Refine prompts to encourage more varied outputs. Check customization guide (`docs/customization.md`).
-* **Issue:** Script runs out of memory.
-    * **Solution:** Reduce batch size for generation. If using local models, ensure sufficient RAM/VRAM.
-* **(Link to more troubleshooting tips or GitHub Issues)** -->
+
 
 ## Contributing 
 
@@ -284,12 +278,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 <!-- ----------------------------------------------------------------- -->
 
 TO DO 
-keep it lean, current readme.md is at alpha stage v0.0.8
+keep it lean, current readme.md is at alpha stage v0.0.9
 
 1.  **Keep it Updated:** As the development or deployment process changes, remember to update the README and the related documents.
 
-2. **Adding visuals:** Make simple diagrams using tools like MermaidJS supported by GitHub Markdown that can significantly improve understanding.
 
-3. **Add dir:** `/prompts` for prompt recomendations
 
-4. **Check that the tests directory is importable by the added _init_.py file. 
+
+
+
