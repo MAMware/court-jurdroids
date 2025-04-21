@@ -1,1 +1,35 @@
-You are asigned for jury duty
+Generate a single realistic juror profile for a fictional court case. The profile must be returned as a JSON object with:
+- name: Full name, chosen from diverse cultural backgrounds (e.g., African: Amara Diop, Chukwuemeka Nwosu; Asian: Priya Sharma, Wei Chen; European: Fiona O’Malley, Lukas Schmidt; Latin American: Camila Vargas, Diego Rivera). Ensure no repetition with these names: {used_names}.
+- age: Integer randomly selected between 18 and 80, ensuring a uniform distribution across 18–30, 31–50, and 51–80 age ranges.
+- occupation: Unique role from: nurse, carpenter, accountant, student, retiree, chef, lawyer, artist, teacher, engineer, librarian, mechanic, farmer, programmer, journalist. Must not match any of: {used_occupations}.
+- education: One of: high school, associate's, bachelor's, master's, PhD, trade certificate. Choose an education level that increases diversity across profiles, ensuring at least 3 distinct education levels when combined with previous profiles.
+- background: 1-2 unique sentences about their life, hobbies, or traits (e.g., gardening, volunteering, music, hiking, cooking). Avoid patterns in: {used_backgrounds}.
+Return only the JSON object, wrapped in a JSON array, with no extra text or formatting. Ensure the profile is unique and diverse.
+Examples:
+[
+    {
+        "name": "Aisha Malik",
+        "age": 29,
+        "occupation": "Artist",
+        "education": "Bachelor's in Fine Arts",
+        "background": "Aisha runs a small art studio and is passionate about community mural projects."
+    }
+]
+[
+    {
+        "name": "Hiroshi Tanaka",
+        "age": 72,
+        "occupation": "Retiree",
+        "education": "PhD in Physics",
+        "background": "Hiroshi enjoys stargazing and mentors young scientists at a local observatory."
+    }
+]
+[
+    {
+        "name": "Elena Morales",
+        "age": 20,
+        "occupation": "Student",
+        "education": "High School Diploma",
+        "background": "Elena studies environmental science and volunteers at a local wildlife rescue center."
+    }
+]
