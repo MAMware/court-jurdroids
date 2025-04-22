@@ -44,14 +44,12 @@ fi
     # On macOS/Linux:
     source venv/bin/activate    
 ```
-
-
 You should see `(venv)` prefixing your command prompt line.
 
-3.  **Install Dependencies:**
-    Install all required packages, including development dependencies (like linters, formatters, testing tools if specified).
+### 3.  Install Dependencies:
+  Install all required packages, including development dependencies (like linters, formatters, testing tools if specified).
 
-    # Ensure pip is up-to-date
+   # Ensure pip is up-to-date
 ```bash
         python -m pip install --upgrade pip
 ```
@@ -68,7 +66,7 @@ You should see `(venv)` prefixing your command prompt line.
     pip install -r requirements-optional.txt
 ```
 
-4.  **Configure Backend LLM Access:**
+### 4.  Configure Backend LLM Access:
     Set up your LLM API keys and other necessary configuration by creating and editing a `.env` file in the project root directory.
     * Copy the example: `cp .env.example .env`
     * Edit `.env` with your credentials.
