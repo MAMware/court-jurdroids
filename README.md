@@ -54,9 +54,9 @@ Before you begin, ensure you have:
 * **Git:** For cloning the repository and version control.
 * **Programming Language & Version:** Python 3.9+
 * **Package Manager:** pip
-* **Cloud Provider or local CLI Account:** e.g., Google Cloud SDK, Azure CLI
+* **Command line interface:** Windows PowerShell, Google Cloud SDK, Azure CLI, GitHub Codespaces 
 * **LLM Access:** An API key for [Specify LLM Provider, e.g., OpenAI, Anthropic, Cohere] or access to a local LLM setup.
-* **Basic understanding of:** LLMs, prompt engineering, Python development, and the Kleros protocol.
+* **Basic understanding of:** LLMs, prompt engineering, Python development, and cd cthe Kleros protocol.
 
 ## Diagram
 ```mermaid
@@ -156,7 +156,7 @@ This repository is structured around the core tasks. Follow the guides linked be
 
 1.  **[Development Environment](./docs/development.md):** Setting up for coding, debugging, testing.
 2.  **[Customizing Juror Generation](./docs/customization.md):** Modifying the logic. Key areas include:
-    * **Prompt Engineering:** Adjusting the text prompts sent to the LLM (often the biggest impact). Files might be in a `/prompts` directory.
+    * **Prompt Engineering:** Adjusting the text prompts sent to the LLM default_propmt.txt . 
     * **Generation Parameters:** Tweaking settings like `temperature`, `top_p`, `max_tokens` (often configurable via `config.yaml` or command-line args).
     * **Backend Logic:** Modifying the Python code (`generate_jurors.py` or similar) to handle different LLM clients (OpenAI, Anthropic, VertexAI, Hugging Face Transformers, local models via libraries like `litellm` or custom wrappers), potentially using different parameters or prompt formats suited to each.
     * **Archetype Definition:** Changing how different types of jurors are defined or requested.
@@ -168,67 +168,10 @@ This repository is structured around the core tasks. Follow the guides linked be
 * **LLM Interaction (TO DO):**  OpenAI Lib, (Langchain, Hugging Face Transformers, Google Vertex AI SDK, LiteLLM (for multi-backend support))
 * **Tested supported Backends (TO DO):**  OpenAI API, (Azure OpenAI, Google Vertex AI, Anthropic API, Hugging Face (Inference API/Transformers), Local models (via Ollama, LM Studio compatible APIs)).
 * **Environment Management:** python-dotenv, potentially YAML reader (PyYAML).
-* **Agent Concepts/Patterns:** May employ techniques discussed in Agentic AI research, such as advanced prompting, planning, reflection, or Retrieval-Augmented Generation (RAG) to enhance profile quality and consistency. (See [Further Reading](#further-reading--conceptual-background)).
-* **Data Handling:** [e.g., Pandas, JSON, YAML]
-* **[Other Libraries]:** [e.g., Scikit-learn for bias analysis]
 
 ## Output Format & Traceability
 
-The tool outputs profiles (e.g., as JSON Lines - one JSON object per line in a file). A key goal is **traceability** for reproducibility and analysis. Each generated profile should include metadata such as:
-
-```json
-// Example JSON structure
-{
-  "jurorId": "sim-juror-abc123",
-  "profile": {
-    // --- Core generated profile attributes ---
-    "background": "Data scientist with a background in behavioral economics.",
-    "expertiseAreas": ["statistics", "machine learning", "market analysis"],
-    "cognitiveProfile": "Prone to analytical thinking, slightly risk-averse, values empirical evidence.",
-    "platformActivity": "Simulated: 25 cases judged, 92% coherence."
-    // ... other relevant generated fields
-  },
-  "generationMetadata": {
-    // --- Fields for tracing randomness and context ---
-    "generationTimestamp": "2025-04-01T09:30:00Z",
-    "llmBackendUsed": "Azure OpenAI", // e.g., "OpenAI", "VertexAI", "HuggingFace", "Local/Ollama"
-    "llmModelName": "gpt-4-deployment-xyz", // Specific model or deployment ID used
-    "promptTemplateId": "juror_base_v1.2", // Identifier for the prompt structure used
-    "generationParameters": { // Key parameters influencing randomness
-      "temperature": 0.75,
-      "top_p": 1.0,
-      "max_tokens": 500
-      // "seed": 42 // If the backend/model supports deterministic seeding
-    },
-    "requestInput": { // Optional: Key inputs used for this specific generation
-      "archetypeRequested": "analytical_expert",
-      "caseContextSnippet": "Dispute involving smart contract failure..." // If applicable
-    }
-    // Potentially add version of the generation script itself
-    // "scriptVersion": "v0.2.1"
-  }
-}
-```
-
-```json
-// Example JSON structure
-{
-  "jurorId": "sim-juror-xyz789",
-  "profile": {
-    "background": "Retired software engineer with interest in economics.",
-    "expertiseAreas": ["software development", "basic contract law"],
-    "cognitiveProfile": "Analytical, detail-oriented, slight skepticism towards complex financial instruments.",
-    "platformActivity": "Simulated history of 15 cases judged, 85% coherence.",
-    // Add other relevant generated fields
-  },
-  "generationMetadata": {
-    "modelUsed": "gpt-4-turbo-preview",
-    "promptTemplateVersion": "v1.2",
-    "generationTimestamp": "2025-04-01T08:00:00Z"
-  }
-}
-```
-*(Adjust the example to match your actual output)*
+The tool outputs profiles one JSON object per line in a file. A key goal is **traceability** for reproducibility and analysis. Each generated profile should include metadata
 
 * See `./docs/output-schema.md`for details.
 
@@ -237,8 +180,9 @@ The tool outputs profiles (e.g., as JSON Lines - one JSON object per line in a f
 **Understanding Agentic AI:** For a good overview of the concepts behind agentic systems, language models, prompting strategies, and design patterns that might be relevant to this tool, its recommened to watch this video *Stanford Webinar - Agentic AI: A Progression of Language Model Usage* [Agentic AI Overview & Concepts](https://www.youtube.com/watch?v=kJLiOGle3Lw) there you will find an introduction to the concept of agentic language models (LMs) and their usage. Common limitations of LMs and agentic LM usage patterns, such as reflection, planning, tool usage, and iterative LM usage. 
 
 
-## Troubleshooting (link to new file)
+## Troubleshooting 
 
+(link to new file)
 
 
 ## Contributing 
@@ -262,15 +206,23 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Contact
 
 * For questions or support, please open an issue on GitHub.
-* Project Maintainer: MAMware - [marcosmeneses@mamware.net]
+* Project Maintainer: MAMware, contributors welcomed!
 
 <!-- ----------------------------------------------------------------- -->
 
-TO DO 
-keep it lean, current readme.md is at alpha stage v0.0.9
 
-1.  **Keep it Updated:** As the development or deployment process changes, remember to update the README and the related documents.
+Current README.md is at beta stage v0.1.0, it is tested working against xAI API.
+To do:
+Feature: load multple juror profiles, ie: sorted by state at `/prompts` directory.
+Wireframe: plan for agentic reasoning and using specific knowledge sources like [Kleros_IO](https://github.com/kleros/kleros-v2)
+Troubleshooting: contribute to the knowledge base
+Agent Concepts/Patterns: may employ techniques discussed in Agentic AI research, such as advanced prompting, planning, reflection, or Retrieval-Augmented Generation (RAG) to enhance profile quality and consistency. (See [Further Reading](#further-reading--conceptual-background)).
+Data Handling: [e.g., Pandas, JSON, YAML]
+Other Libraries: [e.g., Scikit-learn for bias analysis]
 
+**When contributing its recommended to keep this document updated:** As the development or deployment process changes, remember to update the README and related documents.
+
+Welcome
 
 
 
