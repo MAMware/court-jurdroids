@@ -55,7 +55,7 @@ Before you begin, ensure you have:
 * **Programming Language & Version:** Python 3.9+
 * **Package Manager:** pip
 * **Command line interface:** Windows PowerShell, Google Cloud SDK, Azure CLI, GitHub Codespaces 
-* **LLM Access:** An API key for [Specify LLM Provider, e.g., OpenAI, Anthropic, Cohere] or access to a local LLM setup.
+* **LLM Access:** An API key for a large languaje model service such as OpenAI, xAI, Anthropic, Cohere or access to a local LLM setup.
 * **Basic understanding of:** LLMs, prompt engineering, Python development, and cd cthe Kleros protocol.
 
 ## Diagram
@@ -120,8 +120,7 @@ cd court-jurdroids
     venv\Scripts\activate
     ```
     Troubleshooting
-    You might find an error on windows while trying to setup the virtual environment, it is due to a security exception where the Activate.ps1 cannot be loaded becouse running scripts is disablaed on your system.
-    To enable, try to execute
+    If an error appears on windows while trying to setup the virtual environment and it is due to a security exception where the Activate.ps1 cannot be loaded becouse of the running scripts are disablabed on your system, to enable try to execute:
     ```bash
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
     ```
@@ -148,7 +147,7 @@ The tool requires access to an LLM API.
     cp .env.example .env
       ```
      
-2.  **Configuration File (`config.yaml`:** For non-sensitive settings like default model parameters, prompt template paths, etc.
+2.  **Configuration File `config.yaml`:** For non-sensitive settings like default model parameters, prompt template paths, etc.
 
 ## Runbook Sections
 
@@ -164,10 +163,10 @@ This repository is structured around the core tasks. Follow the guides linked be
 
 ## Technology Stack
 
-* **Core Language:** Python [Version]
-* **LLM Interaction (TO DO):**  OpenAI Lib, (Langchain, Hugging Face Transformers, Google Vertex AI SDK, LiteLLM (for multi-backend support))
-* **Tested supported Backends (TO DO):**  OpenAI API, (Azure OpenAI, Google Vertex AI, Anthropic API, Hugging Face (Inference API/Transformers), Local models (via Ollama, LM Studio compatible APIs)).
-* **Environment Management:** python-dotenv, potentially YAML reader (PyYAML).
+* **Core Language:** Python 
+* **LLM Interaction (to test):**  OpenAI Lib, (Langchain, Hugging Face Transformers, Google Vertex AI SDK, LiteLLM {for multi-backend support})
+* **Tested supported Backends (to do):**  OpenAI API, (Azure OpenAI, Google Vertex AI, Anthropic API, Hugging Face Inference API/Transformers, Local models via Ollama or LM Studio compatible API).
+* **Environment Management:** python-dotenv, PyYAML.
 
 ## Output Format & Traceability
 
@@ -215,14 +214,17 @@ Current README.md is at beta stage v0.1.0, it is tested working against xAI API.
 To do:
 Feature: load multple juror profiles, ie: sorted by state at `/prompts` directory.
 Wireframe: plan for agentic reasoning and using specific knowledge sources like [Kleros_IO](https://github.com/kleros/kleros-v2)
-Troubleshooting: contribute to the knowledge base
-Agent Concepts/Patterns: may employ techniques discussed in Agentic AI research, such as advanced prompting, planning, reflection, or Retrieval-Augmented Generation (RAG) to enhance profile quality and consistency. (See [Further Reading](#further-reading--conceptual-background)).
-Data Handling: [e.g., Pandas, JSON, YAML]
-Other Libraries: [e.g., Scikit-learn for bias analysis]
+Agent Concepts/Patterns: may employ techniques discussed in Agentic AI research, such as advanced prompting, planning and reflection.
+Improve the Retrieval-Augmented Generation (RAG) to enhance profile quality and consistency. (See [Further Reading](#further-reading--conceptual-background)).
+Data Handling: e.g., Pandas, JSON, YAML
+Other Libraries: e.g., Scikit-learn for bias analysis
+LLM Interaction to test:  Google Vertex AI SDK, Langchain, Hugging Face Transformers, LiteLLM for multi-backend support.
+Testing with backends:  OpenAI API, Azure OpenAI, Google Vertex AI, Anthropic API, Hugging Face Inference API/Transformers, Local models via Ollama or LM Studio compatible API.
+Troubleshooting: contribute to the knowledge base (file to create)
 
 **When contributing its recommended to keep this document updated:** As the development or deployment process changes, remember to update the README and related documents.
 
-Welcome
+Welcome!
 
 
 
