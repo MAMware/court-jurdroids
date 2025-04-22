@@ -67,16 +67,22 @@ You should see `(venv)` prefixing your command prompt line.
 ```
 
 ### 4.  Configure Backend LLM Access:
-    Set up your LLM API keys and other necessary configuration by creating and editing a `.env` file in the project root directory.
-    * Copy the example: `cp .env.example .env`
-    * Edit `.env` with your credentials.
-    * Refer to the ["Backend Configuration (LLM Access)"](../README.md#backend-configuration-llm-access) section in the main README for detailed examples for different providers (OpenAI, Azure, Vertex AI, etc.). **Remember this file should be in your `.gitignore` and never committed.**
+   Set up your LLM API keys and other necessary configuration by creating and editing a `.env` file in the project root directory.
+        ***Copy the example:***
+    ```bash
+        cp .env.example .env`
+    ```
+        * Edit `.env` with your credentials.
+    ***Remember this file should be in your `.gitignore` and never committed.***
+    
+* The["Backend Configuration (LLM Access)"](../README.md#backend-configuration-llm-access) section in the main README should have detailed examples for different providers (OpenAI, Azure, Vertex AI, etc.). 
 
-## Running Locally for Development
+### Running Locally for Development
 
-To test the generation script locally run at the venv run via python `generate_jurors.py` 
+To test the generation script locally, run via python `generate_jurors.py` at virtual a environment (venv). 
 
-# Example: Generate a small number of profiles for testing
+# Example: Generating a small number of profiles for testing
+
 ```bash
 python generate_jurors.py --count 3 --output test_profiles.jsonl
 ```
