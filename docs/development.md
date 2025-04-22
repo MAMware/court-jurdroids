@@ -14,7 +14,7 @@ Ensure you have the following installed:
   python --version
   ```
 - **pip:** Python's package installer (comes with Python).
-- **Code Editor:** Like Visual Studio Code with the Python extension.
+- **Code Editor:** ie: notepad on windows or via vs code explorer
 
 ---
 
@@ -49,19 +49,19 @@ You should see `(venv)` prefixing your command prompt line.
 ### 3.  Install Dependencies:
   Install all required packages, including development dependencies (like linters, formatters, testing tools if specified).
 
-   # Ensure pip is up-to-date
+   ***Ensure pip is up-to-date***
 ```bash
         python -m pip install --upgrade pip
 ```
-   # Install main dependencies
+   ***Install main dependencies***
 ```bash
      pip install -r requirements.txt
 ```
-   # Install development dependencies for testing and linting        tools, needed only if you are developing or contributing to       the code.
+   ***Install development dependencies*** if you are developing or contributing to the project. 
   ```bash
     pip install -r requirements-dev.txt
 ```
-   # Install the optional dependencies that contains libraries       for data analysis, visualization, or running local                transformer models, needed only if you plan to perform those      specific tasks.
+   ***Install the optional dependencies*** that contains libraries for data analysis, visualization, or running local transformer models, needed only if you plan to perform those specific tasks.
    ```bash
     pip install -r requirements-optional.txt
 ```
