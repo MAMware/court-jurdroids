@@ -50,19 +50,22 @@ You should see `(venv)` prefixing your command prompt line.
 
 3.  **Install Dependencies:**
     Install all required packages, including development dependencies (like linters, formatters, testing tools if specified).
-```bash
+
     # Ensure pip is up-to-date
-    python -m pip install --upgrade pip
-
-    # Install main dependencies
-    pip install -r requirements.txt
-
-    # Install development dependencies for testing and linting        tools, needed only if you are developing or contributing to       the code.
+```bash
+        python -m pip install --upgrade pip
+```
+   # Install main dependencies
+```bash
+     pip install -r requirements.txt
+```
+   # Install development dependencies for testing and linting        tools, needed only if you are developing or contributing to       the code.
+  ```bash
     pip install -r requirements-dev.txt
-
-    # Install the optional dependencies that contains libraries       for data analysis, visualization, or running local                transformer models, needed only if you plan to perform those      specific tasks.
-    # pip install -r requirements-optional.txt
-
+```
+   # Install the optional dependencies that contains libraries       for data analysis, visualization, or running local                transformer models, needed only if you plan to perform those      specific tasks.
+   ```bash
+    pip install -r requirements-optional.txt
 ```
 
 4.  **Configure Backend LLM Access:**
@@ -73,61 +76,12 @@ You should see `(venv)` prefixing your command prompt line.
 
 ## Running Locally for Development
 
-To test the generation script locally (e.g., `generate_jurors.py` - adjust filename if different):
+To test the generation script locally run at the venv run via python `generate_jurors.py` 
 
-```bash
 # Example: Generate a small number of profiles for testing
+```bash
 python generate_jurors.py --count 3 --output test_profiles.jsonl
 ```
 
-* Check the script's arguments (e.g., using `python generate_jurors.py --help` if implemented) for options like specifying models, parameters, or input files.
-
-## Code Style and Linting
-
-Follow standard Python guidelines, PEP 8. Run tools directly or integrate with pre-commit hooks.
-
-* **Formatting:** 
-```bash
-    # Check formatting
-    black --check .
-    # Apply formatting
-    black .
-```
-* **Linting:** 
- ```bash
-    # Run linter (example using flake8)
-    flake8 .
-   
-```
-
-## Testing
-
-* **Framework:** [e.g., pytest]
-```bash
-    # Run all tests
-    pytest
-    # Run tests in a specific file
-    # pytest tests/test_generation.py
-    # Run tests with coverage (if configured)
-    # pytest --cov=src
-```
-* Ensure tests pass before committing changes or opening Pull Requests. Add new tests for new features or bug fixes.
-
-## Debugging
-
-* **VS Code Debugger:** Configure `launch.json` in the `.vscode` directory to run and debug the script with specific arguments.
-* **Logging:** Implement and use the `logging` module for informative output instead of relying solely on `print()` statements for complex flows.
-* **Simple Print:** For quick checks, `print()` statements can be useful, but remove them before committing.
-
-## Git Workflow (Recommended)
-
-1.  Create feature branches off the main branch (`main` or `master`).
-```bash
-    git checkout main
-    git pull origin main
-    git checkout -b feature/your-feature-name
-```
-2.  Make your changes, commit regularly with clear messages.
-3.  Ensure code is formatted, linted, and tests pass.
-4.  Push your feature branch to the remote repository.
-5.  Open a Pull Request against the main branch for review.
+development.md version v0.1.0
+tested with xAI API, note that model names can be tricky and where the first cause of errors at generating profiles, at juror_generation.log a error 403 was found and correlated with the model naming issue
