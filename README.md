@@ -181,7 +181,7 @@ The tool outputs profiles one JSON object per line in a file. A key goal is **tr
 
 ## Troubleshooting 
 
-(link to new file)
+For common issues please refer to the [troubleshooting](./docs/troubleshooting.md).
 
 
 ## Contributing 
@@ -191,7 +191,7 @@ Contributions are welcome! If you want to improve the generation logic, add feat
 1.  Fork the repository.
 2.  Create a new branch (`git checkout -b feature/your-improvement`).
 3.  Make your changes.
-4.  Ensure your changes are well-documented, tested, adhering to ethical guidelines. (if applicable).
+4.  Ensure your changes are well-documented, tested, adhering to ethical guidelines.
 5.  Commit your changes (`git commit -m 'Add feature: your improvement'`).
 6.  Push to the branch (`git push origin feature/your-improvement`).
 7.  Open a Pull Request.
@@ -200,7 +200,7 @@ Contributions are welcome! If you want to improve the generation logic, add feat
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the Creative Commons Attribution-NonCommercial 4.0 International Public License - see the [LICENSE](LICENSE) file for details.
 
 ## Contact
 
