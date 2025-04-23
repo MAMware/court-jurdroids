@@ -1,0 +1,55 @@
+Generate a single, highly realistic juror profile intended for simulating complex judgment scenarios in a fictional court case. The profile MUST be returned as a single JSON object within a JSON array.
+
+**Instructions:**
+
+1.  **Core Demographics:**
+    * `name`: Generate a full name appropriate for the specified `{region}`. Ensure diversity and avoid repetition with these names: `{used_names}`.
+    * `age`: Integer between 18 and 85. Aim for realistic distribution, avoiding clustering.
+    * `occupation`: A specific job title. Choose from diverse fields and ensure it's unique from: `{used_occupations}`.
+    * `education`: Highest level achieved (e.g., 'Primary School Finished', 'Secondary School Incomplete', 'Terciario Completo (Technical Degree)', 'University Graduate (Grado)', 'Master's Degree', 'PhD'). Ensure diversity across profiles.
+
+2.  **Contextual Details:**
+    * `region_context`: Based on the provided `{region}`, describe 1-2 key aspects of this person's local environment or cultural background that might subtly influence their worldview (e.g., economic conditions, prevalent local industries, social norms, known regional biases if appropriate and applicable generally, historical context). Keep it concise and grounded. Example for Formosa, Argentina: "Lives in a region with a strong agricultural focus and relatively lower average income compared to major urban centers. Experiences frequent hot weather." Example for Ushuaia, Argentina: "Resides in a remote, tourism-dependent city with a history tied to maritime activities and experiencing extreme weather conditions."
+    * `background`: 2-3 unique sentences detailing personal history, relevant life experiences, hobbies, values, or personality indicators. Avoid simple lists. Make it distinct from: `{used_backgrounds}`.
+    * `personality_traits` (Optional - if `{traits}` requested): If a framework like BigFive or MBTI is requested via `{traits}`, list the key traits here. Otherwise, omit or leave as "Not Specified".
+    * `archetype_notes` (Optional - if `{archetype}` requested): If a specific archetype like 'Skeptic' or 'Empathetic Listener' is requested via `{archetype}`, provide brief notes consistent with it. Otherwise, omit or leave as "Not Specified".
+
+3.  **Situational Factors & Reasoning:**
+    * `situational_factors_applied`: Briefly list or describe how the provided situational factors (`{situational_factors}`) were incorporated into the profile's current state or potential judgment leanings. If none provided, state "None specified". Example: "Considered 'missed_breakfast' leading to slight irritability; 'watched_crime_drama' might increase skepticism about witness testimony."
+    * `potential_leanings_rationale`: **(Only if `{explain_flag}` is 'Yes')** Based *only* on the generated profile details (demographics, context, background, situation), provide a brief (1-2 sentence) rationale for potential initial leanings or biases relevant to a *generic* court case (without knowing case specifics). Explain *why* they might lean that way, linking it explicitly to profile elements. Example: "Due to their background in meticulous accounting (`occupation`) and stated value of 'fairness' (`background`), they might initially lean towards scrutinizing evidence for inconsistencies (`potential_leanings_rationale`). Their recent experience watching a crime drama (`situational_factors_applied`) could further amplify this scrutiny." If `{explain_flag}` is 'No', omit this field or set it to "Rationale not requested".
+
+**Output Format:**
+Return *only* the JSON object described above, enclosed in a JSON array `[...]`. No extra text, greetings, or explanations outside the JSON structure. Ensure all fields are present unless specified as optional.
+
+**Uniqueness Constraint:** The combination of `name`, `occupation`, and `background` should be unique compared to the provided used lists.
+
+Examples:
+```json
+[
+    {
+        "name": "Facundo Gutiérrez",
+        "age": 52,
+        "occupation": "Construction Foreman",
+        "education": "Secondary School Finished",
+        "region_context": "From Córdoba, Argentina, an industrial and agricultural hub with a strong sense of regional identity. Exposed to diverse viewpoints in a large city.",
+        "background": "Worked his way up in construction for 30 years. Values hard work and practicality. Coaches a youth football team on weekends and is known for being fair but firm.",
+        "personality_traits": "Not Specified",
+        "archetype_notes": "Not Specified",
+        "situational_factors_applied": "Considered 'recent_argument_with_neighbor' potentially leading to a slight negative mood.",
+        "potential_leanings_rationale": "Rationale not requested"
+    }
+]
+[
+    {
+        "name": "Martina Álvarez",
+        "age": 29,
+        "occupation": "Social Worker",
+        "education": "University Graduate (Licenciatura en Trabajo Social)",
+        "region_context": "Based in Buenos Aires (Capital Federal). Accustomed to fast-paced urban life, significant economic disparity, and complex social issues.",
+        "background": "Passionate about social justice and helping vulnerable populations. Volunteers at a community center. Reads extensively and follows current events closely.",
+        "personality_traits": "BigFive: High Agreeableness, High Openness",
+        "archetype_notes": "Empathetic Listener",
+        "situational_factors_applied": "Considered 'good_night_sleep' contributing to a patient demeanor; 'recently_helped_client_unfairly_accused' might increase sensitivity to potential injustice.",
+        "potential_leanings_rationale": "Her professional background (`occupation`) and high Agreeableness (`personality_traits`) suggest an initial leaning towards understanding defendant circumstances, while her recent client experience (`situational_factors_applied`) could make her particularly attentive to procedural fairness (`potential_leanings_rationale`)."
+    }
+]
