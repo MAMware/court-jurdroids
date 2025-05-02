@@ -6,20 +6,22 @@
 # These can often be overridden by command-line arguments
 ---
 llm_defaults:
-  temperature: 0.7
-  max_tokens: 500
+  temperature: 0.9
+  max_tokens: 1000
   # top_p: 1.0 # Uncomment and set if you prefer using top_p
 
 # Default model names per backend (can be overridden by .env or --model-name arg)
 # Useful if you want a default other than what's suggested in .env.example comments
 default_models:
-  openai: "gpt-3.5-turbo"
-  xai: "grok-3-mini-beta"
+  #openai: "gpt-3.5-turbo"
+  #xai: "Grok-3-Beta"
+  #anthropic: "claude-3-7-sonnet-20250219" 
   #azure: "your_default_azure_deployment_name" # Specify your most common Azure deployment
   #vertexai: "gemini-1.5-flash-001"
   #huggingface: "mistralai/Mistral-7B-Instruct-v0.2"
   #local: "llama3:instruct"
-
+  
+ 
 # Paths to prompt template files (relative to project root)
 # Assumes prompts are stored in a /prompts directory
 # prompt_paths:
