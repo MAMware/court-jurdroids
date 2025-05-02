@@ -14,6 +14,7 @@ from vertexai.generative_models import GenerativeModel
 import google.cloud.aiplatform as aiplatform
 from typing import Dict, Any, Tuple, Optional, List
 import re
+import anthropic
 
 # Step 1: Set up logging
 logging.basicConfig(
@@ -39,6 +40,8 @@ def load_environment() -> Dict[str, Any]:
         "GCP_PROJECT_ID": os.getenv("GCP_PROJECT_ID"),
         "GCP_LOCATION": os.getenv("GCP_LOCATION"),
         "NVIDIA_API_KEY": os.getenv("NVIDIA_API_KEY"),
+        "ANTHROPIC_API_KEY": os.getenv("ANTHROPIC_API_KEY"),
+
     }
     return {k: v for k, v in env_vars.items() if v is not None}
 
@@ -82,6 +85,18 @@ def initialize_llm_client(final_config: Dict[str, Any]) -> Tuple[Any, str]:
             return client, backend
         except Exception as e:
             logger.error(f"Failed to initialize xAI client: {str(e)}")
+            raise
+            
+    elif backend == "anthropic":
+        api_key = final_config.get("ANTHROPIC_API_KEY")
+        if not api_key:
+            raise ValueError("Missing ANTHROPIC_API_KEY.")
+        try:
+            client = anthropic.Anthropic(api_key=api_key)
+            logger.info("Anthropic client initialized successfully.")
+            return client, backend
+        except Exception as e:
+            logger.error(f"Failed to initialize Anthropic client: {str(e)}")
             raise
 
     elif backend == "vertexai":
@@ -333,6 +348,19 @@ def generate_profiles(
                     generated_text = response.choices[0].message.content.strip()
                     logger.info(f"Raw xAI response: {generated_text}")
 
+               elif backend == "anthropic":
+    # Claude expects messages in a specific format
+                    response = llm_infra.messages.create(
+                    model=model_name,
+                    max_tokens=max_tokens,
+                    temperature=temperature,
+                    messages=[
+                        {"role": "user", "content": current_prompt}
+                    ]
+                    )
+                    generated_text = response.content[0].text.strip()
+                    logger.info(f"Raw Anthropic response: {generated_text}")
+    
                 elif backend == "vertexai":
                     model = GenerativeModel(model_name)
                     generation_config = {
