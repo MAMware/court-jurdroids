@@ -6,11 +6,11 @@
 
 ## Overview
 
-This repository contains the documentation and code for an AI tool that uses Large Language Models (LLMs) to create varied and nuanced juror profiles. These generated profiles are intended **strictly for simulation, testing, and research purposes** related to decentralized justice systems.
+This repository contains the documentation and code for an AI tool that uses Large Language Models (LLMs) to create varied juror profiles. These generated profiles are intended **strictly for simulation, testing, and research purposes** related to decentralized justice systems.
 
-Conceptually, this tool functions as an **agentic AI system**. It takes high-level instructions and uses LLM capabilities (potentially including planning, reasoning, and using specific knowledge sources) to generate complex, structured outputs in the form of juror profiles. For a deeper dive into Agentic AI concepts, see the video linked in the [Further Reading](#further-reading--conceptual-background) section.
+Conceptually, this tool functions as an **agentic AI system**. It takes high-level instructions and uses LLM capabilities to generate complex, structured outputs in the form of juror profiles. For a deeper dive into Agentic AI concepts, see the video linked in the [Further Reading](#further-reading--conceptual-background) section.
 
-The primary goals of this project and runbook are to:
+The primary goals of this project are:
 
 1. Provide a framework for **generating synthetic juror data** reflecting potential real-world diversity and specific simulated characteristics.
 2. Offer clear instructions for **setting up a development environment** to work on the generation logic.
@@ -44,8 +44,8 @@ The primary goals of this project and runbook are to:
 ## Who is this for?
 
 * **Researchers & Analysts:** Simulating court scenarios, testing mechanism designs, studying potential voting patterns.
-* **Developers:** Working on the juror generation tool itself or integrating simulated jurors into other Kleros-related testing tools.
-* **Protocol Developers:** Stress-testing Kleros contracts with diverse simulated juror data.
+* **Developers:** Working on the juror generation tool itself or integrating simulated jurors into other virtual courts.
+* **Protocol Developers:** Stress-testing with diverse simulated juror data.
 
 ## Prerequisites
 
@@ -213,14 +213,14 @@ This project is licensed under the Creative Commons Attribution-NonCommercial 4.
 Current README.md is at beta stage v0.1.0, it is tested working against xAI API.
 To do:
 Feature: load multple juror profiles, ie: sorted by state at `/prompts` directory.
-Wireframe: plan for agentic reasoning and using specific knowledge sources like [Kleros_IO](https://github.com/kleros/kleros-v2)
 Agent Concepts/Patterns: may employ techniques discussed in Agentic AI research, such as advanced prompting, planning and reflection.
 Improve the Retrieval-Augmented Generation (RAG) to enhance profile quality and consistency. (See [Further Reading](#further-reading--conceptual-background)).
+Potentially include: specific knowledge/court sources.
 Data Handling: e.g., Pandas, JSON, YAML
 Other Libraries: e.g., Scikit-learn for bias analysis
 LLM Interaction to test:  Google Vertex AI SDK, Langchain, Hugging Face Transformers, LiteLLM for multi-backend support.
 Testing with backends:  OpenAI API, Azure OpenAI, Google Vertex AI, Anthropic API, Hugging Face Inference API/Transformers, Local models via Ollama or LM Studio compatible API.
-Troubleshooting: contribute to the knowledge base (file to create)
+Troubleshooting: contribute to the knowledge base
 
 **When contributing its recommended to keep this document updated:** As the development or deployment process changes, remember to update the README and related documents.
 
